@@ -2,21 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/dreamDetailFragment2">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/homeFragment2"
         android:name="com.example.dreamorganizer.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_dreamDetailFragment"
-            app:destination="@id/dreamDetailFragment" />
+            android:id="@+id/action_homeFragment2_to_dreamDetailFragment2"
+            app:destination="@id/dreamDetailFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/dreamDetailFragment"
+        android:id="@+id/dreamDetailFragment2"
         android:name="com.example.dreamorganizer.DreamDetailFragment"
         android:label="fragment_dream_detail"
-        tools:layout="@layout/fragment_dream_detail" />
+        tools:layout="@layout/fragment_dream_detail" >
+        <action
+            android:id="@+id/action_dreamDetailFragment2_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+    </fragment>
 </navigation>
