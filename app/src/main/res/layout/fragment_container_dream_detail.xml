@@ -7,11 +7,14 @@
     android:orientation="vertical"
     tools:context=".ContainerDreamDetailFragment" >
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/dream_fragment_container"
+
+    <fragment
+        android:id="@+id/fragment_dream_detail_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav_graph" />
+
+
 </LinearLayout>

@@ -19,11 +19,12 @@ class DreamDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainViewModel : MainViewModel by sharedViewModel()
+        val mainViewModel  by sharedViewModel<MainViewModel >()
+
         val btnNavigateToHome : Button = view.findViewById(R.id.bt_dream_detail_fragment_go_to_home)
 
         btnNavigateToHome.setOnClickListener {
-            mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToDreamDetail)
+            mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToHome)
         }
 
 

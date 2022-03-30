@@ -7,9 +7,18 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="com.example.dreamorganizer.ContainerDreamDetailFragment"
+        android:id="@+id/fragmentContainerView6"
+        android:name="com.example.dreamorganizer.HomeContainerFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_nav_graph"
+        />
+
+
+
+
+
 </LinearLayout>
