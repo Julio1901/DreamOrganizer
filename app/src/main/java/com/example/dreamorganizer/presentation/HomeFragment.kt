@@ -1,4 +1,4 @@
-package com.example.dreamorganizer
+package com.example.dreamorganizer.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
+import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
+import com.example.dreamorganizer.presentation.viewModel.MainViewModel
+import com.example.dreamorganizer.R
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -29,9 +28,9 @@ class HomeFragment : Fragment() {
 
 
 //       val navHostFragment =
-//            childFragmentManager.findFragmentById(R.id.fragment_home_container) as NavHostFragment?
+//            childFragmentManager.findFragmentById(R.id.fragment_main_container) as NavHostFragment?
 
-        val mainViewModel  by sharedViewModel<MainViewModel >()
+        val mainViewModel  by sharedViewModel<MainViewModel>()
 
         val btnGoToDetail : Button = view.findViewById(R.id.bt_home_fragment_go_to_detail)
 

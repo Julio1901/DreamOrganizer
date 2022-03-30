@@ -1,8 +1,8 @@
-package com.example.dreamorganizer
+package com.example.dreamorganizer.presentation.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
 
 class MainViewModel : ViewModel() {
     private val _navigationEvent = MutableLiveData<MainNavigationEvent>()

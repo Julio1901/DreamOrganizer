@@ -1,4 +1,4 @@
-package com.example.dreamorganizer
+package com.example.dreamorganizer.presentation.container.interact
 
 sealed class MainNavigationEvent {
     object OnNavigateToDreamDetail : MainNavigationEvent()

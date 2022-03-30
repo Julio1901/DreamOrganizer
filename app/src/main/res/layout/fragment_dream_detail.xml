@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DreamDetailFragment">
+    tools:context=".presentation.DreamDetailFragment">
 
     <Button
         android:id="@+id/bt_dream_detail_fragment_go_to_home"
