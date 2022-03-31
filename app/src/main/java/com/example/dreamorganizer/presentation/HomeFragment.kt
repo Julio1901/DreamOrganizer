@@ -31,15 +31,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mainViewModel  by sharedViewModel<MainViewModel>()
+        val btTest : Button = view.findViewById(R.id.bt_ui_test)
+        val tvTest : TextView = view.findViewById(R.id.tv_iu_test)
 
-        //val btnGoToDetail : Button = view.findViewById(R.id.bt_home_fragment_go_to_detail)
+        btTest.setOnClickListener {
+            tvTest.text = "Was clicked - Ui Test"
 
-        //btnGoToDetail.setOnClickListener {
-        //    mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToDreamDetail)
-        //}
-
-
-
+        }
 
 
     }

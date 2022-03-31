@@ -117,5 +117,15 @@
             android:text="R$ 3.000,00"/>
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/tv_iu_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="TEST UI"/>
+    <Button
+        android:id="@+id/bt_ui_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BTN TEST"/>
 </LinearLayout>
