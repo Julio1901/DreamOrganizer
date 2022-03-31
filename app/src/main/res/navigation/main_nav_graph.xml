@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment2_to_dreamDetailFragment2"
             app:destination="@id/dreamDetailFragment2" />
+        <action
+            android:id="@+id/action_homeFragment2_to_secondContainerFragment"
+            app:destination="@id/secondContainerFragment" />
     </fragment>
     <fragment
         android:id="@+id/dreamDetailFragment2"
@@ -23,4 +26,9 @@
             android:id="@+id/action_dreamDetailFragment2_to_homeFragment2"
             app:destination="@id/homeFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/secondContainerFragment"
+        android:name="com.example.dreamorganizer.SecondContainerFragment"
+        android:label="fragment_second_container"
+        tools:layout="@layout/fragment_second_container" />
 </navigation>

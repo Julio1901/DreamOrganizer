@@ -39,6 +39,10 @@ class MainContainerFragment : Fragment() {
         navHostFragment.navController.navigate(R.id.action_homeFragment2_to_dreamDetailFragment2)
     }
 
+    private fun goToSecondGraph(){
+        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_secondContainerFragment)
+    }
+
     private fun setupObserver() {
         mainViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
@@ -58,6 +62,8 @@ class MainContainerFragment : Fragment() {
         when(it){
             is MainNavigationEvent.OnNavigateToDreamDetail -> goToDream()
             is MainNavigationEvent.OnNavigateToHome -> goToHome()
+            is MainNavigationEvent.OnNavigateToSecondGraph -> goToSecondGraph()
+
         }
 
     }

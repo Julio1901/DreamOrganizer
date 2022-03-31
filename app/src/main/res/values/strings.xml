@@ -7,4 +7,6 @@
     <string name="total_money">Total money</string>
     <string name="dream_list">Dream list</string>
     <string name="rest_of_the_money">Rest of the money</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

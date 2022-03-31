@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,15 +39,15 @@ class HomeFragment : Fragment() {
 
         val mainViewModel  by sharedViewModel<MainViewModel>()
         val reciclerViewDreamList : RecyclerView = view.findViewById(R.id.rv_home_dream_list)
+        val buttonTest : Button = view.findViewById(R.id.bt_home_fragment_test_navigation)
 
-    
+
+        buttonTest.setOnClickListener {
+            mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToSecondGraph)
+        }
+
         //val imageManager = ImageManager()
         //val mockImageBitMap = imageManager.saveImageInBank(eiffelTowerImage.drawable.toBitmap())
-
-
-
-
     }
-
 
 }
