@@ -29,7 +29,7 @@
 
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/iv_eiffel_tower"
                 android:layout_width="100dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="15dp"
@@ -89,13 +89,13 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_home_dream_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:scrollbars="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="10"
-            tools:layout_height="90dp"
             tools:listitem="@layout/fragment_card_item" />
 
         <TextView
@@ -117,15 +117,4 @@
             android:text="R$ 3.000,00"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_iu_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        tools:text="TEST UI"/>
-    <Button
-        android:id="@+id/bt_ui_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BTN TEST"/>
 </LinearLayout>

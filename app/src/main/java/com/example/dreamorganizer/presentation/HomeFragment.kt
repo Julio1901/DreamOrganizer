@@ -9,11 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
+import com.example.dreamorganizer.adapter.DreamAdapter
+import com.example.dreamorganizer.model.DreamVO
 import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
 import com.example.dreamorganizer.presentation.viewModel.MainViewModel
+import com.example.dreamorganizer.util.ImageManager
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -31,13 +37,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mainViewModel  by sharedViewModel<MainViewModel>()
-        val btTest : Button = view.findViewById(R.id.bt_ui_test)
-        val tvTest : TextView = view.findViewById(R.id.tv_iu_test)
+        val reciclerViewDreamList : RecyclerView = view.findViewById(R.id.rv_home_dream_list)
 
-        btTest.setOnClickListener {
-            tvTest.text = "Was clicked - Ui Test"
+    
+        //val imageManager = ImageManager()
+        //val mockImageBitMap = imageManager.saveImageInBank(eiffelTowerImage.drawable.toBitmap())
 
-        }
+
 
 
     }
