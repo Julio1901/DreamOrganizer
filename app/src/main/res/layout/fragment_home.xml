@@ -123,4 +123,10 @@
         android:layout_height="wrap_content"
         android:text="Test navigation"/>
 
+    <Button
+        android:id="@+id/bt_home_fragment_test_recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test RecyclerView"/>
+
 </LinearLayout>

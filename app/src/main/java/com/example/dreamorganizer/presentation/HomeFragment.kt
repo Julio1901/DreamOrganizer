@@ -40,10 +40,22 @@ class HomeFragment : Fragment() {
         val mainViewModel  by sharedViewModel<MainViewModel>()
         val reciclerViewDreamList : RecyclerView = view.findViewById(R.id.rv_home_dream_list)
         val buttonTest : Button = view.findViewById(R.id.bt_home_fragment_test_navigation)
-
+        val buttonTestRecyclerView : Button = view.findViewById(R.id.bt_home_fragment_test_recyclerView)
 
         buttonTest.setOnClickListener {
             mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToSecondGraph)
+        }
+
+
+        val imageManager = ImageManager()
+        val fakeList = mutableListOf(DreamVO(imageManager.saveImageInBank(resources.getDrawable(R.drawable.iphone_dream_photo).toBitmap()), "Iphone"))
+        reciclerViewDreamList.adapter = DreamAdapter(fakeList)
+
+        var counter = 1
+        buttonTestRecyclerView.setOnClickListener {
+            reciclerViewDreamList.adapter = DreamAdapter(fakeList)
+            counter++
+            fakeList.add(DreamVO(imageManager.saveImageInBank(resources.getDrawable(R.drawable.iphone_dream_photo).toBitmap()), "Iphone $counter"))
         }
 
         //val imageManager = ImageManager()
