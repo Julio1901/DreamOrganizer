@@ -69,5 +69,6 @@ dependencies {
     androidTestImplementation "androidx.test:rules:1.1.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
-
+    //Use this to fix crash in  FLAG_IMMUTABLE
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
 }
