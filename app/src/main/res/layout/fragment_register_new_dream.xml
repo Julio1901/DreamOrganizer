@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".features.RegisterNewDreamFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_your_new_dream_here"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvl_dream_name_add_new_dream"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/old_gold"
+        android:textColorHint="@color/white"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        app:helperText="@string/required_text_input_warning"
+        app:helperTextTextColor="@color/red"
+
+        app:counterEnabled="true"
+        app:counterMaxLength="30"
+        app:counterTextColor="@color/old_gold"
+
+        app:startIconDrawable="@drawable/ic_diamond"
+        app:startIconTint="@color/white"
+        android:hint="@string/dream_name" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tied_dream_name_add_new_dream"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvl_dream_value_add_new_dream"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/old_gold"
+        android:textColorHint="@color/white"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        app:helperText="@string/required_text_input_warning"
+        app:helperTextTextColor="@color/red"
+
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:counterTextColor="@color/old_gold"
+
+        app:startIconDrawable="@drawable/ic_money"
+        app:startIconTint="@color/white"
+        android:hint="@string/dream_value_hint" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tied_dream_value_add_new_dream"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_here_to_insert_an_image"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_camera" />
+
+        <Button
+            android:id="@+id/bt_save_add_new_dream"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/old_gold"
+            android:text="@string/save" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

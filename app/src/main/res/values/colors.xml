@@ -10,6 +10,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="old_gold">#FEC412</color>
     <color name="green">#58FB00</color>
+    <color name="red">#DC054E</color>
+
+    <!--Custom elements-->
+    <color name="mtrl_textinput_default_box_stroke_color">#FFFFFFFF</color>
+    <color name="mtrl_textinput_default_hint_textColor">#FFFFFFFF</color>
+
+
+
 
 
 </resources>

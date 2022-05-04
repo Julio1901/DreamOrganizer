@@ -39,7 +39,7 @@ class MainContainerFragment : Fragment() {
         navHostFragment.navController.navigate(R.id.action_homeFragment2_to_dreamDetailFragment2)
     }
 
-    private fun goToSecondGraph(){
+    private fun goToRegisterNewDreamGraph(){
         navHostFragment.navController.navigate(R.id.action_homeFragment2_to_secondContainerFragment)
     }
 
@@ -62,7 +62,7 @@ class MainContainerFragment : Fragment() {
         when(it){
             is MainNavigationEvent.OnNavigateToDreamDetail -> goToDream()
             is MainNavigationEvent.OnNavigateToHome -> goToHome()
-            is MainNavigationEvent.OnNavigateToSecondGraph -> goToSecondGraph()
+            is MainNavigationEvent.OnNavigateToRegisterNewDreamGraph -> goToRegisterNewDreamGraph()
 
         }
 
