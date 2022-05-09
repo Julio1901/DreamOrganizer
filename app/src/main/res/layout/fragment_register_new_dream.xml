@@ -31,7 +31,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
-        app:helperText="@string/required_text_input_warning"
         app:helperTextTextColor="@color/red"
 
         app:counterEnabled="true"
@@ -62,7 +61,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
-        app:helperText="@string/required_text_input_warning"
         app:helperTextTextColor="@color/red"
 
         app:counterEnabled="true"
@@ -87,14 +85,30 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_display_dream_image_add_new_dream"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            app:shapeAppearanceOverlay="@style/Circular"
+            app:strokeColor="@color/old_gold"
+            android:background="@drawable/background_shape_gradient_old"
+            app:strokeWidth="3dp"
+            tools:srcCompat="@drawable/iphone_dream_photo" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/click_here_to_insert_an_image"
             android:textColor="@color/white"
             android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             />
         <ImageView
+            android:id="@+id/iv_button_camera_add_new_dream"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -16,5 +16,6 @@
     <string name="required_text_input_warning">Required *</string>
     <string name="save">Save</string>
     <string name="click_here_to_insert_an_image">Click here to insert an image</string>
+    <string name="default_blank_value"> </string>
 
 </resources>
