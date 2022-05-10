@@ -1,4 +1,4 @@
-package com.example.dreamorganizer.features
+package com.example.dreamorganizer.features.dreams.presentation
 
 import android.app.Activity
 import android.content.Intent
@@ -12,8 +12,11 @@ import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import androidx.core.view.isVisible
 import com.example.dreamorganizer.R
+import com.example.dreamorganizer.features.dreams.model.DreamDTO
+import com.example.dreamorganizer.viewModel.MainViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 private const val REQUEST_CODE = 100
 
@@ -38,6 +41,25 @@ class RegisterNewDreamFragment : Fragment() {
 
         initViews(view)
         setupListeners()
+
+        //TODO replace this initialization
+        val mainViewModel  by sharedViewModel<MainViewModel>()
+        var itsFirstTime = true
+
+        btnSaveDream.setOnClickListener {
+            checkValidateFields()
+
+            if(itsFirstTime){
+                val mockDream = DreamDTO(id = 0 ,name = "Iphone 13", value = 7000.0F, image = null)
+                mainViewModel.testSet(mockDream)
+                itsFirstTime = false
+            } else
+                mainViewModel.testGet(1)
+        }
+
+
+
+
     }
 
     private fun initViews(view: View){
@@ -77,9 +99,9 @@ class RegisterNewDreamFragment : Fragment() {
             openGalleryForImage()
         }
 
-        btnSaveDream.setOnClickListener {
-            checkValidateFields()
-        }
+//        btnSaveDream.setOnClickListener {
+//            checkValidateFields()
+//        }
     }
 
     private fun checkValidateFields() : Boolean{
@@ -106,7 +128,7 @@ class RegisterNewDreamFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE){
             ivDisplayDreamImage.isVisible = true
-            ivDisplayDreamImage.setImageURI(data?.data) // handle chosen image
+            ivDisplayDreamImage.setImageURI(data?.data)
         }
     }
 

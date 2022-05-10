@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
-import com.example.dreamorganizer.presentation.viewModel.MainViewModel
+import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.R
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class MainContainerFragment : Fragment() {
 
     lateinit var navHostFragment: NavHostFragment
-    private val mainViewModel : MainViewModel by sharedViewModel()
+    private val navigationViewModel : NavigationViewModel by sharedViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,11 +40,11 @@ class MainContainerFragment : Fragment() {
     }
 
     private fun goToRegisterNewDreamGraph(){
-        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_secondContainerFragment)
+        navHostFragment.navController.navigate(R.id.action_home_to_add_new_dream)
     }
 
     private fun setupObserver() {
-        mainViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
+        navigationViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
         })
 

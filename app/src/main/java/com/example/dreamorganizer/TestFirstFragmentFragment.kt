@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.example.dreamorganizer.presentation.viewModel.MainViewModel
+import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class TestFirstFragmentFragment : Fragment() {
@@ -25,12 +25,12 @@ class TestFirstFragmentFragment : Fragment() {
 
 
         val buttonNavigationTest : Button = view.findViewById(R.id.bt_first_fragment_to_second_container_test_navigation)
-        val mainViewModel : MainViewModel by sharedViewModel()
+        val navigationViewModel : NavigationViewModel by sharedViewModel()
 
 
 
         buttonNavigationTest.setOnClickListener {
-            mainViewModel.secondNavigation(true)
+            navigationViewModel.secondNavigation(true)
         }
 
 

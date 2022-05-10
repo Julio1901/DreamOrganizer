@@ -14,7 +14,7 @@
             android:id="@+id/action_homeFragment2_to_dreamDetailFragment2"
             app:destination="@id/dreamDetailFragment2" />
         <action
-            android:id="@+id/action_homeFragment2_to_secondContainerFragment"
+            android:id="@+id/action_home_to_add_new_dream"
             app:destination="@id/secondContainerFragment" />
     </fragment>
     <fragment

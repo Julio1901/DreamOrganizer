@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
-import com.example.dreamorganizer.presentation.viewModel.MainViewModel
+import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SecondContainerFragment : Fragment() {
 
     lateinit var navHostFragment: NavHostFragment
-    private val mainViewModel : MainViewModel by sharedViewModel()
+    private val navigationViewModel : NavigationViewModel by sharedViewModel()
 
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class SecondContainerFragment : Fragment() {
     }
 
     private fun setupObserver() {
-        mainViewModel.secondContainerNavigation.observe(viewLifecycleOwner, Observer {
+        navigationViewModel.secondContainerNavigation.observe(viewLifecycleOwner, Observer {
             navHostFragment.navController.navigate(R.id.action_testFirstFragmentFragment_to_testSecondFragment)
         })
 

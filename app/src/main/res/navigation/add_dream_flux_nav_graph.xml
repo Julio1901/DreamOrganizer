@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/second_nav_graph"
-    app:startDestination="@id/registerNewDreamFragment">
+    app:startDestination="@id/registerNewDreamFragment2">
 
     <fragment
         android:id="@+id/testFirstFragmentFragment"
@@ -20,8 +20,8 @@
         android:label="fragment_test_second"
         tools:layout="@layout/fragment_test_second" />
     <fragment
-        android:id="@+id/registerNewDreamFragment"
-        android:name="com.example.dreamorganizer.features.RegisterNewDreamFragment"
+        android:id="@+id/registerNewDreamFragment2"
+        android:name="com.example.dreamorganizer.features.dreams.presentation.RegisterNewDreamFragment"
         android:label="fragment_register_new_dream"
         tools:layout="@layout/fragment_register_new_dream" />
 </navigation>
