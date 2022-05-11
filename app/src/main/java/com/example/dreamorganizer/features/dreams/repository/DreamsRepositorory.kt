@@ -3,16 +3,18 @@ package com.example.dreamorganizer.features.dreams.repository
 import android.content.Context
 import com.example.dreamorganizer.dao.AppDatabase
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
+import org.koin.androidx.compose.inject
 
-class DreamsRepository() {
+class DreamsRepository(context: Context) {
 
-    //private val dbInstance = AppDatabase.getDatabaseAppInstance(context)
-    //private val daoInstance = dbInstance.dreamDao()
+    private val dbInstance = AppDatabase.getDatabaseAppInstance(context)
 
-    //fun getDream(id : Int) = daoInstance.getDream(id)
-    fun getDream(id : Int) {}
+    private val daoInstance = dbInstance.dreamDao()
 
-    //fun saveDream(dream: DreamDTO){daoInstance.saveDream(dream)}
-    fun saveDream(dream: DreamDTO){}
+    suspend fun getDream(id : Int) = daoInstance.getDream(id)
+    //fun getDream(id : Int) {}
+
+    suspend fun saveDream(dream: DreamDTO){daoInstance.saveDream(dream)}
+    //fun saveDream(dream: DreamDTO){}
 
 }

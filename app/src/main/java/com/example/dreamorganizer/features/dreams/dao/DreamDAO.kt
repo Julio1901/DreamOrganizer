@@ -1,22 +1,24 @@
 package com.example.dreamorganizer.features.dreams.dao
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
 
+@Dao
 interface DreamDAO {
 
     @Query("SELECT * FROM dreams")
-    fun getAll(): List<DreamDTO>
+    suspend fun getAll(): List<DreamDTO>
 
     @Query("SELECT * FROM dreams WHERE id LIKE :id")
-    fun getDream(id: Int) : DreamDTO
+    suspend fun getDream(id: Int) : DreamDTO
 
     @Insert
-    fun saveDream(dreamDTO: DreamDTO)
+    suspend fun saveDream(dreamDTO: DreamDTO)
 
     @Delete
-    fun deleteDream(dreamDTO: DreamDTO)
+    suspend fun deleteDream(dreamDTO: DreamDTO)
 
 }

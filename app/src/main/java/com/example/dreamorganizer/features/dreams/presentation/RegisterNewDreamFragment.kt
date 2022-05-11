@@ -50,7 +50,7 @@ class RegisterNewDreamFragment : Fragment() {
             checkValidateFields()
 
             if(itsFirstTime){
-                val mockDream = DreamDTO(id = 0 ,name = "Iphone 13", value = 7000.0F, image = null)
+                val mockDream = DreamDTO(id = 0 ,name = "Iphone 14", value = 7000.0F, image = null)
                 mainViewModel.testSet(mockDream)
                 itsFirstTime = false
             } else
