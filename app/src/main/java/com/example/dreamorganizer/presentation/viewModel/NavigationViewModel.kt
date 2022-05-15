@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
 
 class NavigationViewModel : ViewModel() {
+
     private val _navigationEvent = MutableLiveData<MainNavigationEvent>()
     val navigationEvent : MutableLiveData<MainNavigationEvent>
         get() = _navigationEvent

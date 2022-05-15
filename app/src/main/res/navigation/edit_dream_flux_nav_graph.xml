@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_dream_flux_nav_graph"
+    app:startDestination="@id/editDreamFragment">
+
+    <fragment
+        android:id="@+id/editDreamFragment"
+        android:name="com.example.dreamorganizer.features.dreams.presentation.fragments.EditDreamFragment"
+        android:label="fragment_edit_dream"
+        tools:layout="@layout/fragment_edit_dream" />
+
+
+</navigation>

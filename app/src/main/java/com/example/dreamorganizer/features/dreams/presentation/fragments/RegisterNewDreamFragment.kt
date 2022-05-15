@@ -1,8 +1,9 @@
-package com.example.dreamorganizer.features.dreams.presentation
+package com.example.dreamorganizer.features.dreams.presentation.fragments
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,9 @@ import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import androidx.core.view.isVisible
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
+import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamContainerNavigationEvent
+import com.example.dreamorganizer.features.dreams.presentation.container.DreamContainerViewModel
+import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
 import com.example.dreamorganizer.viewModel.MainViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -42,20 +46,29 @@ class RegisterNewDreamFragment : Fragment() {
         initViews(view)
         setupListeners()
 
-        //TODO replace this initialization
         val mainViewModel  by sharedViewModel<MainViewModel>()
+        val dreamContainerViewModel by sharedViewModel<DreamContainerViewModel>()
+
         var itsFirstTime = true
 
+
+        //TODO: Replace this to call function by interaction
         btnSaveDream.setOnClickListener {
+            //TODO use it to parameter in logical flux
             checkValidateFields()
 
             if(itsFirstTime){
-                val mockDream = DreamDTO(id = 0 ,name = "Iphone 14", value = 7000.0F, image = null)
-                mainViewModel.testSet(mockDream)
+                //TODO remove this mock test
+                val mockDream = DreamDTO(id = 0 ,name = "Iphone ", value = 7000.0F, totalMoneyReserved = 0F ,image = null)
+                mainViewModel.interpret(DreamsInteract.AddNewDream(mockDream))
                 itsFirstTime = false
             } else
-                mainViewModel.testGet(1)
+                mainViewModel.interpret(DreamsInteract.GetDreamFromDb(1))
+
+
+            dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
         }
+
 
 
 

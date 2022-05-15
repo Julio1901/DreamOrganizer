@@ -10,12 +10,15 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.R
+import com.example.dreamorganizer.presentation.HomeFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class MainContainerFragment : Fragment() {
 
-    lateinit var navHostFragment: NavHostFragment
+    private lateinit var navHostFragment: NavHostFragment
     private val navigationViewModel : NavigationViewModel by sharedViewModel()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,16 +34,26 @@ class MainContainerFragment : Fragment() {
 
     }
 
-    private fun goToHome() {
-        navHostFragment.navController.navigate(R.id.action_dreamDetailFragment2_to_homeFragment2)
-    }
+//    private fun goToHome() {
+//        navHostFragment.navController.navigate(R.id.)
+//    }
+//
 
-    private fun goToDream() {
-        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_dreamDetailFragment2)
-    }
+//    private fun goToDream() {
+//        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_dreamDetailFragment2)
+//    }
+
+
 
     private fun goToRegisterNewDreamGraph(){
-        navHostFragment.navController.navigate(R.id.action_home_to_add_new_dream)
+        // TODO replace with interact here
+        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_dreamContainerFragment)
+
+
+    }
+
+    private fun goToEditDream(){
+        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_editDreamContainerFragment)
     }
 
     private fun setupObserver() {
@@ -60,12 +73,11 @@ class MainContainerFragment : Fragment() {
 
     private fun handleNavigation(it : MainNavigationEvent){
         when(it){
-            is MainNavigationEvent.OnNavigateToDreamDetail -> goToDream()
-            is MainNavigationEvent.OnNavigateToHome -> goToHome()
+            is MainNavigationEvent.OnNavigateToDreamDetail -> goToEditDream()
+            //is MainNavigationEvent.OnNavigateToHome -> goToHome()
             is MainNavigationEvent.OnNavigateToRegisterNewDreamGraph -> goToRegisterNewDreamGraph()
 
         }
 
     }
-
 }

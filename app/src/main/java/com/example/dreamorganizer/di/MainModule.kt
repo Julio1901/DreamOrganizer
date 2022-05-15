@@ -7,6 +7,7 @@ import com.example.dreamorganizer.features.dreams.UseCase.GetDreamUseCase
 import com.example.dreamorganizer.features.dreams.UseCase.GetDreamUseCaseImpl
 import com.example.dreamorganizer.features.dreams.UseCase.SetDreamUseCase
 import com.example.dreamorganizer.features.dreams.UseCase.SetDreamUseCaseImpl
+import com.example.dreamorganizer.features.dreams.presentation.container.DreamContainerViewModel
 import com.example.dreamorganizer.features.dreams.repository.DreamsRepository
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.viewModel.MainViewModel
@@ -19,6 +20,7 @@ import kotlin.coroutines.coroutineContext
 val mainModule = module {
     viewModel {NavigationViewModel()}
     viewModel {MainViewModel(get(), get()) }
+    viewModel { DreamContainerViewModel() }
 }
 
 val useCase = module {

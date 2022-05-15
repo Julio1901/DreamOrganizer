@@ -31,17 +31,11 @@ class SecondContainerFragment : Fragment() {
 
 
         initViews()
-        setupObserver()
 
 
     }
 
-    private fun setupObserver() {
-        navigationViewModel.secondContainerNavigation.observe(viewLifecycleOwner, Observer {
-            navHostFragment.navController.navigate(R.id.action_testFirstFragmentFragment_to_testSecondFragment)
-        })
 
-    }
 
 
         private fun initViews(){

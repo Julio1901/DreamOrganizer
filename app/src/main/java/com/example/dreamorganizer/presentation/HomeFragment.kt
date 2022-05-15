@@ -36,6 +36,7 @@ class HomeFragment : Fragment() {
         val buttonTestRecyclerView : Button = view.findViewById(R.id.bt_home_fragment_test_recyclerView)
 
         buttonTest.setOnClickListener {
+            //mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToDreamDetail)
             mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToRegisterNewDreamGraph)
         }
 

@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_nav_graph"
+    android:id="@+id/action_home_to_add_new_dream_flux"
     app:startDestination="@id/homeFragment2">
 
     <fragment
@@ -11,24 +11,28 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment2_to_dreamDetailFragment2"
-            app:destination="@id/dreamDetailFragment2" />
+            android:id="@+id/action_homeFragment2_to_editDreamContainerFragment"
+            app:destination="@id/editDreamContainerFragment" />
         <action
-            android:id="@+id/action_home_to_add_new_dream"
-            app:destination="@id/secondContainerFragment" />
+            android:id="@+id/action_homeFragment2_to_dreamContainerFragment"
+            app:destination="@id/dreamContainerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/dreamDetailFragment2"
-        android:name="com.example.dreamorganizer.presentation.DreamDetailFragment"
-        android:label="fragment_dream_detail"
-        tools:layout="@layout/fragment_dream_detail" >
+        android:id="@+id/editDreamContainerFragment"
+        android:name="com.example.dreamorganizer.features.dreams.presentation.container.EditDreamContainerFragment"
+        android:label="fragment_edit_dream_container"
+        tools:layout="@layout/fragment_edit_dream_container" >
         <action
-            android:id="@+id/action_dreamDetailFragment2_to_homeFragment2"
+            android:id="@+id/action_editDreamContainerFragment_to_homeFragment2"
             app:destination="@id/homeFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/secondContainerFragment"
-        android:name="com.example.dreamorganizer.SecondContainerFragment"
-        android:label="fragment_second_container"
-        tools:layout="@layout/fragment_second_container" />
+        android:id="@+id/dreamContainerFragment"
+        android:name="com.example.dreamorganizer.features.dreams.presentation.container.DreamContainerFragment"
+        android:label="fragment_dream_container"
+        tools:layout="@layout/fragment_dream_container" >
+        <action
+            android:id="@+id/action_dreamContainerFragment_to_homeFragment2"
+            app:destination="@id/homeFragment2" />
+    </fragment>
 </navigation>
