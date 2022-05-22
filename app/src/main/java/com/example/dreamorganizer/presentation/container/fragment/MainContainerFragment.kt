@@ -52,9 +52,6 @@ class MainContainerFragment : Fragment() {
 
     }
 
-    private fun goToEditDream(){
-        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_editDreamContainerFragment)
-    }
 
     private fun setupObserver() {
         navigationViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
@@ -73,7 +70,7 @@ class MainContainerFragment : Fragment() {
 
     private fun handleNavigation(it : MainNavigationEvent){
         when(it){
-            is MainNavigationEvent.OnNavigateToDreamDetail -> goToEditDream()
+
             //is MainNavigationEvent.OnNavigateToHome -> goToHome()
             is MainNavigationEvent.OnNavigateToRegisterNewDreamGraph -> goToRegisterNewDreamGraph()
 

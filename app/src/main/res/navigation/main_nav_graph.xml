@@ -11,20 +11,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment2_to_editDreamContainerFragment"
-            app:destination="@id/editDreamContainerFragment" />
-        <action
             android:id="@+id/action_homeFragment2_to_dreamContainerFragment"
             app:destination="@id/dreamContainerFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/editDreamContainerFragment"
-        android:name="com.example.dreamorganizer.features.dreams.presentation.container.EditDreamContainerFragment"
-        android:label="fragment_edit_dream_container"
-        tools:layout="@layout/fragment_edit_dream_container" >
-        <action
-            android:id="@+id/action_editDreamContainerFragment_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
     </fragment>
     <fragment
         android:id="@+id/dreamContainerFragment"
@@ -33,6 +21,11 @@
         tools:layout="@layout/fragment_dream_container" >
         <action
             android:id="@+id/action_dreamContainerFragment_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
+            app:destination="@id/mainActivity" />
     </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.dreamorganizer.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
