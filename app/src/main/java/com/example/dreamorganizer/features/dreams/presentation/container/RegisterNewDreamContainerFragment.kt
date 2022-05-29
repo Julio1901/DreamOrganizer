@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
+import com.example.dreamorganizer.MainActivity
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamContainerNavigationEvent
+import com.example.dreamorganizer.util.navigateToNavGraph
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class DreamContainerFragment : Fragment() {
+class RegisterNewDreamContainerFragment : Fragment() {
 
    private val dreamContainerViewModel : DreamContainerViewModel by sharedViewModel()
 
@@ -20,7 +21,7 @@ class DreamContainerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dream_container, container, false)
+        return inflater.inflate(R.layout.fragment_register_new_dream_container, container, false)
 
 
 
@@ -30,15 +31,12 @@ class DreamContainerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO: Move it from container
         dreamContainerViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
         })
 
     }
-
-
-
-
 
     private fun handleNavigation(navigationEvent : DreamContainerNavigationEvent){
         when(navigationEvent){
@@ -48,7 +46,7 @@ class DreamContainerFragment : Fragment() {
 
     private fun navigateToHome(){
         //TODO navigate to first graph here
-       //findNavController().navigate(R.id.action_to_home)
+       navigateToNavGraph(MainActivity::class.java)
     }
 
 }

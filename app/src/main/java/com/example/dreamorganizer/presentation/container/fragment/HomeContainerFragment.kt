@@ -37,25 +37,10 @@ class HomeContainerFragment : Fragment() {
 
     }
 
-//    private fun goToHome() {
-//        navHostFragment.navController.navigate(R.id.)
-//    }
-//
-
-//    private fun goToDream() {
-//        navHostFragment.navController.navigate(R.id.action_homeFragment2_to_dreamDetailFragment2)
-//    }
-
-
-
     private fun goToRegisterNewDreamGraph(){
         navigateToNavGraph(AddNewDreamFlowActivity::class.java)
     }
 
-//    private fun goToEditDream(){
-//        navHostFragment.navController.navigate(R.id.test)
-//        //navHostFragment.navController.navigate(R.id.action_homeFragment2_to_editDreamContainerFragment)
-//    }
 
     private fun setupObserver() {
         navigationViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
@@ -66,8 +51,7 @@ class HomeContainerFragment : Fragment() {
 
     private fun initViews(){
         view?.let {
-//            navHostFragment =
-//            childFragmentManager.findFragmentById(R.id.fragment_home_container) as NavHostFragment
+            //TODO build method
         }
     }
 

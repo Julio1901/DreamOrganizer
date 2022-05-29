@@ -3,13 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/second_nav_graph"
-    app:startDestination="@id/registerNewDreamFragment2">
-
+    app:startDestination="@id/registerNewDreamContainerFragment">
     <fragment
-        android:id="@+id/registerNewDreamFragment2"
-        android:name="com.example.dreamorganizer.features.dreams.presentation.fragments.RegisterNewDreamFragment"
-        android:label="fragment_register_new_dream"
-        tools:layout="@layout/fragment_register_new_dream" /><action android:id="@+id/action_to_register_dream" app:destination="@id/registerNewDreamFragment2"/>
-
-
+        android:id="@+id/registerNewDreamContainerFragment"
+        android:name="com.example.dreamorganizer.features.dreams.presentation.container.RegisterNewDreamContainerFragment"
+        android:label="fragment_register_new_dream_container"
+        tools:layout="@layout/fragment_register_new_dream_container" />
+    <action android:id="@+id/action_global_go_to_register_dream_flow" app:destination="@id/registerNewDreamContainerFragment" />
 </navigation>
