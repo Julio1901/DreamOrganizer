@@ -2,7 +2,12 @@ package com.example.dreamorganizer.features.dreams.presentation.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +15,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.content.res.AppCompatResources.getColorStateList
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.isVisible
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamContainerNavigationEvent
 import com.example.dreamorganizer.features.dreams.presentation.container.DreamContainerViewModel
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
+import com.example.dreamorganizer.util.ImageManager
 import com.example.dreamorganizer.viewModel.MainViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -26,13 +33,14 @@ private const val REQUEST_CODE = 100
 
 class RegisterNewDreamFragment : Fragment() {
 
-    lateinit var textInputLayoutDreamName : TextInputLayout
-    lateinit var textInputDreamName : TextInputEditText
-    lateinit var textInputLayoutDreamValue : TextInputLayout
-    lateinit var textInputDreamValue : TextInputEditText
-    lateinit var ivDisplayDreamImage : ImageView
-    lateinit var ivButtonCameraSelectImageFromGallery : ImageView
-    lateinit var btnSaveDream : Button
+    private lateinit var textInputLayoutDreamName : TextInputLayout
+    private lateinit var textInputDreamName : TextInputEditText
+    private lateinit var textInputLayoutDreamValue : TextInputLayout
+    private lateinit var textInputDreamValue : TextInputEditText
+    private lateinit var ivDisplayDreamImage : ImageView
+    private lateinit var imageManager : ImageManager
+    private lateinit var ivButtonCameraSelectImageFromGallery : ImageView
+    private lateinit var btnSaveDream : Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,25 +61,29 @@ class RegisterNewDreamFragment : Fragment() {
 
 
 
-        //TODO: Replace this to call function by interaction
         btnSaveDream.setOnClickListener {
 
-
-            //TODO remove this mock test
-            //val mockDream = DreamDTO(id = 0 ,name = "Iphone ", value = 7000.0F, totalMoneyReserved = 0F ,image = null)
-
-
-
             if(checkValidateFields()){
+                /* Temporary treatment. Check for a better way to
+                * accomplish this
+                * */
+                if (ivDisplayDreamImage.drawable == null){
+                    //Set default image case image field has null
+                    ivDisplayDreamImage.setImageResource(R.drawable.ic_camera)
+                }
+
+                val currentImage = ivDisplayDreamImage.drawable
+                val imageToSave = currentImage.toBitmap()
+                val imageConverted = imageManager.saveImageInBank(imageToSave)
+
                 val newDreamToSave = DreamDTO(id= 0,
                     name = textInputDreamName.text.toString(),
                     value= textInputDreamValue.text.toString().toFloat(),
-                    totalMoneyReserved = 0F ,image = null
+                    totalMoneyReserved = 0F ,image = imageConverted
                 )
 
-
-                //mainViewModel.interpret(DreamsInteract.AddNewDream(newDreamToSave))
-                //dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+                mainViewModel.interpret(DreamsInteract.AddNewDream(newDreamToSave))
+                dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
             }
 
         }
@@ -92,6 +104,8 @@ class RegisterNewDreamFragment : Fragment() {
             ivButtonCameraSelectImageFromGallery = it.findViewById(R.id.iv_button_camera_add_new_dream)
             btnSaveDream = it.findViewById(R.id.bt_save_add_new_dream)
         }
+
+        imageManager = ImageManager()
     }
 
 

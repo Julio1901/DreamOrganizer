@@ -34,8 +34,6 @@ class RegisterNewDreamContainerFragment : Fragment() {
 
         dreamContainerViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
-            //TODO: Not passing here
-            Log.e("test","has changed" )
         })
 
     }
