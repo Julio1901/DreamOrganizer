@@ -10,10 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.adapter.DreamAdapter
+import com.example.dreamorganizer.features.dreams.presentation.activity.EditDreamFlowActivity
 import com.example.dreamorganizer.model.DreamVO
 import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.util.ImageManager
+import com.example.dreamorganizer.util.navigateToNavGraph
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -35,6 +37,8 @@ class HomeFragment : Fragment() {
 
         initViews(view)
         setupClicks()
+
+
 
         val imageManager = ImageManager()
         val fakeList = mutableListOf(DreamVO(imageManager.saveImageInBank(resources.getDrawable(R.drawable.iphone_dream_photo).toBitmap()), "Iphone"))

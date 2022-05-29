@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".features.dreams.presentation.container.EditDreamContainerFragment" >
+    tools:context=".features.dreams.presentation.activity.EditDreamFlowActivity">
+
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="com.example.dreamorganizer.features.dreams.presentation.fragments.EditDreamFragment"
-        android:id="@+id/list"
+        android:id="@+id/navHostEditDreamFlow"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
-
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/edit_dream_flux_nav_graph"
+        />
 
 
 

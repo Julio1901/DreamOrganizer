@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DreamOrganizer">
         <activity
+            android:name=".features.dreams.presentation.activity.EditDreamFlowActivity"
+            android:exported="false" />
+        <activity
             android:name=".features.dreams.presentation.activity.AddNewDreamFlowActivity"
             android:exported="false" />
         <activity

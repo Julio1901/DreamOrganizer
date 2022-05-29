@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/test_shape.xml" value="0.2485" />
         <entry key="app/src/main/res/layout/activity_add_new_dream_flow.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/activity_edit_dream_flow.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15266815185546875" />
         <entry key="app/src/main/res/layout/fragment_card_item.xml" value="0.75" />
         <entry key="app/src/main/res/layout/fragment_container_dream_detail.xml" value="0.24270833333333333" />
