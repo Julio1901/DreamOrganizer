@@ -47,7 +47,8 @@ class DreamContainerFragment : Fragment() {
     }
 
     private fun navigateToHome(){
-       findNavController().navigate(R.id.action_dreamContainerFragment_to_homeFragment2)
+        //TODO navigate to first graph here
+       //findNavController().navigate(R.id.action_to_home)
     }
 
 }

@@ -5,16 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
-import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
-import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.features.dreams.presentation.activity.AddNewDreamFlowActivity
+import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
+import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.util.navigateToNavGraph
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import androidx.lifecycle.Observer
 
-class MainContainerFragment : Fragment() {
+class HomeContainerFragment : Fragment() {
+
 
     private lateinit var navHostFragment: NavHostFragment
     private val navigationViewModel : NavigationViewModel by sharedViewModel()
@@ -24,8 +25,9 @@ class MainContainerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main_container, container, false)
+        return inflater.inflate(R.layout.fragment_home_container, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -78,4 +80,7 @@ class MainContainerFragment : Fragment() {
         }
 
     }
+
+
+
 }

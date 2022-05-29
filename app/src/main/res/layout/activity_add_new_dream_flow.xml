@@ -5,19 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
+    tools:context=".features.dreams.presentation.activity.AddNewDreamFlowActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/navHostFirstActivity"
+        android:id="@+id/navHostAddNewDreamFlow"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav_graph"
+        app:navGraph="@navigation/add_dream_flux_nav_graph"
         />
-
-
 
 
 </LinearLayout>

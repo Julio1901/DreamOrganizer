@@ -17,5 +17,6 @@
     <string name="save">Save</string>
     <string name="click_here_to_insert_an_image">Click here to insert an image</string>
     <string name="default_blank_value"> </string>
+    <string name="add_new_dream">Add new Dream</string>
 
 </resources>

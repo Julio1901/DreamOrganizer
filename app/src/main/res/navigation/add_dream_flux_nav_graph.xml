@@ -9,7 +9,7 @@
         android:id="@+id/registerNewDreamFragment2"
         android:name="com.example.dreamorganizer.features.dreams.presentation.fragments.RegisterNewDreamFragment"
         android:label="fragment_register_new_dream"
-        tools:layout="@layout/fragment_register_new_dream" />
+        tools:layout="@layout/fragment_register_new_dream" /><action android:id="@+id/action_to_register_dream" app:destination="@id/registerNewDreamFragment2"/>
 
 
 </navigation>
