@@ -14,6 +14,7 @@
     <string name="dream_value">Value</string>
     <string name="dream_value_hint">R$ 0,00</string>
     <string name="required_text_input_warning">Required *</string>
+    <string name="invalid_value_this_field_requires_a_numeral">Valor inválido, esse campo requer um número</string>
     <string name="save">Save</string>
     <string name="click_here_to_insert_an_image">Click here to insert an image</string>
     <string name="default_blank_value"> </string>

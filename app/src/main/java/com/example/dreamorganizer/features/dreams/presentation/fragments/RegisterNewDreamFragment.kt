@@ -3,7 +3,6 @@ package com.example.dreamorganizer.features.dreams.presentation.fragments
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +20,7 @@ import com.example.dreamorganizer.viewModel.MainViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import java.lang.Exception
 
 private const val REQUEST_CODE = 100
 
@@ -33,6 +33,7 @@ class RegisterNewDreamFragment : Fragment() {
     lateinit var ivDisplayDreamImage : ImageView
     lateinit var ivButtonCameraSelectImageFromGallery : ImageView
     lateinit var btnSaveDream : Button
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,24 +50,30 @@ class RegisterNewDreamFragment : Fragment() {
         val mainViewModel  by sharedViewModel<MainViewModel>()
         val dreamContainerViewModel by sharedViewModel<DreamContainerViewModel>()
 
-        var itsFirstTime = true
+
 
 
         //TODO: Replace this to call function by interaction
         btnSaveDream.setOnClickListener {
-            //TODO use it to parameter in logical flux
-            checkValidateFields()
-
-            if(itsFirstTime){
-                //TODO remove this mock test
-                val mockDream = DreamDTO(id = 0 ,name = "Iphone ", value = 7000.0F, totalMoneyReserved = 0F ,image = null)
-                mainViewModel.interpret(DreamsInteract.AddNewDream(mockDream))
-                itsFirstTime = false
-            } else
-                mainViewModel.interpret(DreamsInteract.GetDreamFromDb(1))
 
 
-            dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+            //TODO remove this mock test
+            //val mockDream = DreamDTO(id = 0 ,name = "Iphone ", value = 7000.0F, totalMoneyReserved = 0F ,image = null)
+
+
+
+            if(checkValidateFields()){
+                val newDreamToSave = DreamDTO(id= 0,
+                    name = textInputDreamName.text.toString(),
+                    value= textInputDreamValue.text.toString().toFloat(),
+                    totalMoneyReserved = 0F ,image = null
+                )
+
+
+                //mainViewModel.interpret(DreamsInteract.AddNewDream(newDreamToSave))
+                //dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+            }
+
         }
 
 
@@ -112,12 +119,11 @@ class RegisterNewDreamFragment : Fragment() {
             openGalleryForImage()
         }
 
-//        btnSaveDream.setOnClickListener {
-//            checkValidateFields()
-//        }
+
     }
 
     private fun checkValidateFields() : Boolean{
+
         if(textInputDreamName.text!!.isBlank() || textInputDreamName.text!!.isEmpty()){
             textInputLayoutDreamName.helperText = getString(R.string.required_text_input_warning)
             return false
@@ -127,6 +133,18 @@ class RegisterNewDreamFragment : Fragment() {
             textInputLayoutDreamValue.helperText = getString(R.string.required_text_input_warning)
             return false
         }
+
+        if(textInputDreamValue.text!!.isNotBlank() || textInputDreamValue.text!!.isNotEmpty()){
+
+            try {
+                val valueConverted = textInputDreamValue.text.toString().toFloat()
+                return true
+            }catch (e : Exception){
+                textInputLayoutDreamValue.helperText = getString(R.string.invalid_value_this_field_requires_a_numeral)
+                return false
+            }
+        }
+
         else
             return true
     }

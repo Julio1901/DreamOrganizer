@@ -11,9 +11,9 @@ class AddNewDreamFlowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_dream_flow)
 
-
-        intent?.extras?.getInt(EXTRA_START_NAV_RES_ID)
-            ?.takeIf { it > 0 }
-            ?.let { findNavController(it).navigate(it) }
+        //TODO: Check if it has necessary
+//        intent?.extras?.getInt(EXTRA_START_NAV_RES_ID)
+//            ?.takeIf { it > 0 }
+//            ?.let { findNavController(it).navigate(it) }
     }
 }

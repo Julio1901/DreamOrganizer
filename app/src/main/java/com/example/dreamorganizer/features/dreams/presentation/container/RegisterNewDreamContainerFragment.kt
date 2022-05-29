@@ -1,6 +1,7 @@
 package com.example.dreamorganizer.features.dreams.presentation.container
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,9 +32,10 @@ class RegisterNewDreamContainerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO: Move it from container
         dreamContainerViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
+            //TODO: Not passing here
+            Log.e("test","has changed" )
         })
 
     }
@@ -41,12 +43,23 @@ class RegisterNewDreamContainerFragment : Fragment() {
     private fun handleNavigation(navigationEvent : DreamContainerNavigationEvent){
         when(navigationEvent){
             is DreamContainerNavigationEvent.NavigateToHome -> navigateToHome()
+
         }
     }
 
     private fun navigateToHome(){
-        //TODO navigate to first graph here
        navigateToNavGraph(MainActivity::class.java)
     }
+
+
+
+
+
+
+
+
+
+
+
 
 }
