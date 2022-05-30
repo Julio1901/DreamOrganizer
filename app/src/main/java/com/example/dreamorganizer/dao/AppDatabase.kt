@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.dreamorganizer.features.dreams.dao.DreamDAO
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
 
-@Database(entities = [DreamDTO :: class], version = 1)
+@Database(entities = [DreamDTO :: class], version = 2)
 abstract class AppDatabase : RoomDatabase(){
 
     abstract fun dreamDao(): DreamDAO
