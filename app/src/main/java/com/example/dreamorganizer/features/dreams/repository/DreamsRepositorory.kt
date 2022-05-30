@@ -12,9 +12,9 @@ class DreamsRepository(context: Context) {
     private val daoInstance = dbInstance.dreamDao()
 
     suspend fun getDream(id : Int) = daoInstance.getDream(id)
-    //fun getDream(id : Int) {}
 
     suspend fun saveDream(dream: DreamDTO){daoInstance.saveDream(dream)}
-    //fun saveDream(dream: DreamDTO){}
+
+    suspend fun getAllDreams() = daoInstance.getAll()
 
 }

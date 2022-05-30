@@ -11,3 +11,11 @@ abstract class UseCase<in T, out O> : CoroutineScope {
 
     abstract suspend fun execute(paramrs: T): O
 }
+
+abstract class UseCaseWithoutParameters<out O> : CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO
+
+    abstract suspend fun execute(): O
+}

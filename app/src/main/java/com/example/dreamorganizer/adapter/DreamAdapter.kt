@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
+import com.example.dreamorganizer.features.dreams.model.DreamDTO
 import com.example.dreamorganizer.model.DreamVO
 import com.example.dreamorganizer.util.ImageManager
 import com.google.android.material.imageview.ShapeableImageView
 
 //TODO: Replace any with the data model class
-class DreamAdapter (private val dreamList : List<DreamVO>) : RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
+class DreamAdapter (private val dreamList : List<DreamDTO>) : RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
 
     private val imageManager  = ImageManager()
 
@@ -33,8 +34,12 @@ class DreamAdapter (private val dreamList : List<DreamVO>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: DreamViewHolder, position: Int) {
         val item = dreamList[position]
 
-        holder.dreamImage.setImageBitmap(imageManager.convertBankImageToDisplay(item.dreamImage))
-        holder.dreamTitle.text = item.dreamTitle
+        //TODO: REPLACE IT
+        if(item.image != null){
+            holder.dreamImage.setImageBitmap(imageManager.convertBankImageToDisplay(item.image))
+        }
+
+        holder.dreamTitle.text = item.name
 
 
     }

@@ -8,18 +8,19 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.features.dreams.presentation.activity.AddNewDreamFlowActivity
-import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
+import com.example.dreamorganizer.presentation.container.interact.HomeNavigationEvent
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.util.navigateToNavGraph
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
+import com.example.dreamorganizer.adapter.DreamAdapter
+import com.example.dreamorganizer.presentation.viewModel.HomeViewModel
 
 class HomeContainerFragment : Fragment() {
 
-
     private lateinit var navHostFragment: NavHostFragment
     private val navigationViewModel : NavigationViewModel by sharedViewModel()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +33,7 @@ class HomeContainerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
+
         setupObserver()
 
     }
@@ -46,20 +47,12 @@ class HomeContainerFragment : Fragment() {
         navigationViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
         })
-
     }
 
-    private fun initViews(){
-        view?.let {
-            //TODO build method
-        }
-    }
-
-
-    private fun handleNavigation(it : MainNavigationEvent){
+    private fun handleNavigation(it : HomeNavigationEvent){
         when(it){
             //is MainNavigationEvent.OnNavigateToDreamDetail -> goToEditDream()
-            is MainNavigationEvent.OnNavigateToRegisterNewDreamGraph -> goToRegisterNewDreamGraph()
+            is HomeNavigationEvent.OnNavigateToRegisterNewDreamGraph -> goToRegisterNewDreamGraph()
 
         }
 

@@ -5,17 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.adapter.DreamAdapter
-import com.example.dreamorganizer.features.dreams.presentation.activity.EditDreamFlowActivity
-import com.example.dreamorganizer.model.DreamVO
-import com.example.dreamorganizer.presentation.container.interact.MainNavigationEvent
+import com.example.dreamorganizer.presentation.container.interact.HomeInteractEvent
+import com.example.dreamorganizer.presentation.container.interact.HomeNavigationEvent
+import com.example.dreamorganizer.presentation.viewModel.HomeViewModel
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
-import com.example.dreamorganizer.util.ImageManager
-import com.example.dreamorganizer.util.navigateToNavGraph
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -23,7 +21,10 @@ class HomeFragment : Fragment() {
 
     lateinit var reciclerViewDreamList : RecyclerView
     lateinit var btnAddNewDream : Button
-    private val mainViewModel  by sharedViewModel<NavigationViewModel>()
+    private val navigationViewModel  by sharedViewModel<NavigationViewModel>()
+    private val homeViewModel by sharedViewModel<HomeViewModel>()
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +38,13 @@ class HomeFragment : Fragment() {
 
         initViews(view)
         setupClicks()
+        setUpListeners()
+        populateDreamList()
 
+    }
 
-
-        val imageManager = ImageManager()
-        val fakeList = mutableListOf(DreamVO(imageManager.saveImageInBank(resources.getDrawable(R.drawable.iphone_dream_photo).toBitmap()), "Iphone"))
-        reciclerViewDreamList.adapter = DreamAdapter(fakeList)
-
+    private fun populateDreamList() {
+        homeViewModel.interpret(HomeInteractEvent.GetAllDreamFromDb)
     }
 
     private fun initViews(view: View){
@@ -55,9 +56,14 @@ class HomeFragment : Fragment() {
 
     private fun setupClicks(){
         btnAddNewDream.setOnClickListener {
-            mainViewModel.interpretNavigation(MainNavigationEvent.OnNavigateToRegisterNewDreamGraph)
+           navigationViewModel.interpretNavigation(HomeNavigationEvent.OnNavigateToRegisterNewDreamGraph)
         }
+    }
 
+    private fun setUpListeners(){
+        homeViewModel.listOfDreams.observe(viewLifecycleOwner, Observer {
+            reciclerViewDreamList.adapter = DreamAdapter(it)
+        } )
     }
 
 }
