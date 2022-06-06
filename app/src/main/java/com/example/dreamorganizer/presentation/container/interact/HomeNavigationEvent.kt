@@ -1,6 +1,6 @@
 package com.example.dreamorganizer.presentation.container.interact
 
 sealed class HomeNavigationEvent {
-    object OnNavigateToDreamDetail : HomeNavigationEvent()
+    data class OnNavigateToDreamDetail (val dreamId: Int) : HomeNavigationEvent()
     object OnNavigateToRegisterNewDreamGraph : HomeNavigationEvent()
 }

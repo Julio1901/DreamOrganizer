@@ -1,6 +1,5 @@
 package com.example.dreamorganizer.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,9 @@ import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.util.ImageManager
 import com.google.android.material.imageview.ShapeableImageView
 
-class DreamAdapter (private val dreamList : List<DreamDTO>, private val navigationViewModel: NavigationViewModel) : RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
+class DreamAdapter (private val dreamList : List<DreamDTO>,
+                    private val navigationViewModel: NavigationViewModel
+) : RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
 
     private val imageManager  = ImageManager()
 
@@ -43,7 +44,8 @@ class DreamAdapter (private val dreamList : List<DreamDTO>, private val navigati
 
         holder.dreamTitle.text = item.name
         holder.itemView.setOnClickListener {
-            navigationViewModel.interpretNavigation(HomeNavigationEvent.OnNavigateToDreamDetail)
+            //TODO: Check if the holder.Id type can be changed to Int
+            navigationViewModel.interpretNavigation(HomeNavigationEvent.OnNavigateToDreamDetail(item.id))
         }
 
 

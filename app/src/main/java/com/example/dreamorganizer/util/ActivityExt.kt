@@ -10,12 +10,18 @@ fun <T : Activity> Activity.navigateToNavGraph(
     entryPoint: Class<T>,
     @IdRes navGraphStartDestination: Int? = null,
     overridePendingTransition: Boolean = false,
+    dreamId : Int? = null
 ){
 
     val intent = Intent(this, entryPoint)
 
+
     if (navGraphStartDestination != null){
         intent.putExtra(EXTRA_START_NAV_RES_ID, navGraphStartDestination)
+    }
+
+    if (dreamId != null){
+        intent.putExtra("dream_id", dreamId)
     }
 
     if (overridePendingTransition){

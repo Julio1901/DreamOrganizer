@@ -8,12 +8,13 @@ fun <T : Activity> Fragment.navigateToNavGraph (
     entryPoint: Class<T>,
     @IdRes navGraphStartDestination: Int? = null,
     overridePendingTransition: Boolean = false,
+    dreamId : Int? = null
 ){
     requireActivity().navigateToNavGraph(
         entryPoint,
         navGraphStartDestination,
         overridePendingTransition,
-
+        dreamId
         )
 
 }

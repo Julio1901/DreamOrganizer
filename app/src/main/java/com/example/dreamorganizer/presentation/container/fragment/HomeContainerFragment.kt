@@ -47,9 +47,8 @@ class HomeContainerFragment : Fragment() {
 
     private fun handleNavigation(it : HomeNavigationEvent){
         when(it){
-            is HomeNavigationEvent.OnNavigateToDreamDetail -> goToEditDream()
+            is HomeNavigationEvent.OnNavigateToDreamDetail -> goToEditDream(it.dreamId)
             is HomeNavigationEvent.OnNavigateToRegisterNewDreamGraph -> goToRegisterNewDreamGraph()
-
         }
 
     }
@@ -58,8 +57,8 @@ class HomeContainerFragment : Fragment() {
         navigateToNavGraph(AddNewDreamFlowActivity::class.java)
     }
 
-    private fun goToEditDream() {
-        navigateToNavGraph(EditDreamFlowActivity::class.java)
+    private fun goToEditDream(dreamId: Int) {
+        navigateToNavGraph(EditDreamFlowActivity::class.java, dreamId = dreamId)
     }
 
 
