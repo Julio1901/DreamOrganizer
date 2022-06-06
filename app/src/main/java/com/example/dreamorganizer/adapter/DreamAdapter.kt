@@ -1,5 +1,6 @@
 package com.example.dreamorganizer.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,19 +8,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
-import com.example.dreamorganizer.model.DreamVO
+import com.example.dreamorganizer.presentation.container.interact.HomeNavigationEvent
+import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.util.ImageManager
 import com.google.android.material.imageview.ShapeableImageView
 
-//TODO: Replace any with the data model class
-class DreamAdapter (private val dreamList : List<DreamDTO>) : RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
+class DreamAdapter (private val dreamList : List<DreamDTO>, private val navigationViewModel: NavigationViewModel) : RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
 
     private val imageManager  = ImageManager()
+
+
 
     class DreamViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val dreamImage : ShapeableImageView
         val dreamTitle : TextView
-
 
         init {
             dreamImage = view.findViewById(R.id.siv_card_view_repository_list_author_picture)
@@ -40,6 +42,9 @@ class DreamAdapter (private val dreamList : List<DreamDTO>) : RecyclerView.Adapt
         }
 
         holder.dreamTitle.text = item.name
+        holder.itemView.setOnClickListener {
+            navigationViewModel.interpretNavigation(HomeNavigationEvent.OnNavigateToDreamDetail)
+        }
 
 
     }

@@ -15,6 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.adapter.DreamAdapter
+import com.example.dreamorganizer.features.dreams.presentation.activity.EditDreamFlowActivity
 import com.example.dreamorganizer.presentation.viewModel.HomeViewModel
 
 class HomeContainerFragment : Fragment() {
@@ -38,11 +39,6 @@ class HomeContainerFragment : Fragment() {
 
     }
 
-    private fun goToRegisterNewDreamGraph(){
-        navigateToNavGraph(AddNewDreamFlowActivity::class.java)
-    }
-
-
     private fun setupObserver() {
         navigationViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
@@ -51,13 +47,20 @@ class HomeContainerFragment : Fragment() {
 
     private fun handleNavigation(it : HomeNavigationEvent){
         when(it){
-            //is MainNavigationEvent.OnNavigateToDreamDetail -> goToEditDream()
+            is HomeNavigationEvent.OnNavigateToDreamDetail -> goToEditDream()
             is HomeNavigationEvent.OnNavigateToRegisterNewDreamGraph -> goToRegisterNewDreamGraph()
 
         }
 
     }
 
+    private fun goToRegisterNewDreamGraph(){
+        navigateToNavGraph(AddNewDreamFlowActivity::class.java)
+    }
+
+    private fun goToEditDream() {
+        navigateToNavGraph(EditDreamFlowActivity::class.java)
+    }
 
 
 }

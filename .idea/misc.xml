@@ -14,12 +14,13 @@
         <entry key="app/src/main/res/layout/fragment_dfsglank.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_dream_container.xml" value="0.20462962962962963" />
         <entry key="app/src/main/res/layout/fragment_dream_detail.xml" value="0.1962962962962963" />
-        <entry key="app/src/main/res/layout/fragment_edit_dream.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/fragment_edit_dream.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_edit_dream_container.xml" value="0.225" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.265777587890625" />
         <entry key="app/src/main/res/layout/fragment_home_container.xml" value="0.21388888888888888" />
         <entry key="app/src/main/res/layout/fragment_main_container.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_register_new_dream.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_register_new_dream_container.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_second_container.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_test_first_fragment.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_test_second.xml" value="0.2953125" />

@@ -1,26 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/black"
     tools:context=".features.dreams.presentation.fragments.EditDreamFragment">
 
 
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_display_dream_image_add_new_dream"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:padding="4dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:strokeColor="@color/old_gold"
+        android:background="@drawable/background_shape_gradient_old"
+        app:strokeWidth="3dp"
+        app:srcCompat="@drawable/iphone_dream_photo" />
+
+
     <TextView
+        android:id="@+id/tv_dream_name_edit_dream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="EDIT DREAM FRAGMENT"
-        android:layout_marginTop="200dp"/>
-
-    <Button
-        android:id="@+id/bt_edit_dream_back_to_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Iphone 13"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
-        android:text="Back to home"
-        android:layout_marginTop="200dp" />
+        android:layout_marginTop="8dp"
+        android:textSize="20dp"
+        />
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="end"
+            android:orientation="horizontal"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Money reserved"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$ 2.400,00"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:gravity="start"
+                android:text="Total Value"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$ 8.000,00"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="28dp"
+
+            >
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="4dp"
+                android:scaleType="fitCenter"
+                app:shapeAppearanceOverlay="@style/Circular"
+                app:strokeColor="@color/white"
+                app:strokeWidth="3dp"
+                app:srcCompat="@drawable/ic_close" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change value"
+                android:backgroundTint="@color/old_gold"
+                android:layout_marginStart="68dp"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

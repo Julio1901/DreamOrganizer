@@ -25,12 +25,12 @@ class EditDreamFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val btnBackToHome : Button = view.findViewById(R.id.bt_edit_dream_back_to_home)
+       // val btnBackToHome : Button = view.findViewById(R.id.bt_edit_dream_back_to_home)
 
         //TODO move it to container and apply viewModelDirections pattern
-        btnBackToHome.setOnClickListener {
-            navigateToNavGraph(MainActivity::class.java)
-        }
+//        btnBackToHome.setOnClickListener {
+//            navigateToNavGraph(MainActivity::class.java)
+//        }
 
     }
 

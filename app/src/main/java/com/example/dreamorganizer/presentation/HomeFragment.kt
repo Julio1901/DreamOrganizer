@@ -62,7 +62,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpListeners(){
         homeViewModel.listOfDreams.observe(viewLifecycleOwner, Observer {
-            reciclerViewDreamList.adapter = DreamAdapter(it)
+            reciclerViewDreamList.adapter = DreamAdapter(it, navigationViewModel)
         } )
     }
 
