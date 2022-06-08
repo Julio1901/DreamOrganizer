@@ -1,6 +1,5 @@
 package com.example.dreamorganizer.features.dreams.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,14 +8,15 @@ import com.example.dreamorganizer.features.dreams.UseCase.SetDreamUseCase
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
                               private val setDreamUseCase: SetDreamUseCase) : ViewModel(){
 
 
-    private val _selectedDreamId = MutableLiveData<Int>()
-    val selectedDreamId : MutableLiveData<Int>
-        get () = _selectedDreamId
+    private val _selectedDream = MutableLiveData<DreamDTO>()
+    val selectedDream : MutableLiveData<DreamDTO>
+        get () = _selectedDream
 
 
     fun interpret (interact: DreamsInteract){
@@ -38,12 +38,20 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
     private fun getDreamFromDb(id: Int){
         viewModelScope.launch {
             val response = getDreamUseCase.execute(id)
-             //TODO make method here
+            _selectedDream.value = response
         }
     }
 
-    private fun changeSelectedDreamId(id: Int){
-        _selectedDreamId.value = id
+    private fun changeSelectedDreamId(id: Any?){
+        if (id != null){
+            try {
+                getDreamFromDb(id as Int)
+            }catch ( e: Exception){
+                //TODO: Log error here
+            }
+        }
     }
+
+
 
 }

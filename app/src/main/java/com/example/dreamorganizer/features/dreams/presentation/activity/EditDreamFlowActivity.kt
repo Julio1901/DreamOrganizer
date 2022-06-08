@@ -10,10 +10,5 @@ class EditDreamFlowActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_dream_flow)
 
-
-        val id = intent.extras!!.get("dream_id")
-        Log.e("chegou", id.toString())
-
-
     }
 }
