@@ -70,6 +70,16 @@
 
             >
 
+            <Button
+                android:id="@+id/bt_plus_money_reserved_edit_dream"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/black"
+                android:drawableBottom="@drawable/ic_plus"
+                android:drawableTint="@color/white"
+                android:layout_marginEnd="4dp"
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,6 +94,17 @@
                 android:text="2.400,00"
                 android:textColor="@color/white" />
 
+            <Button
+                android:id="@+id/bt_subtract_money_reserved_edit_dream"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:backgroundTint="@color/black"
+                android:drawableBottom="@drawable/ic_subtract"
+                android:drawableTint="@color/white"
+                android:layout_marginEnd="4dp"
+                />
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -92,6 +113,16 @@
             android:layout_gravity="right"
             android:gravity="end"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_plus_total_value_edit_dream"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/black"
+                android:drawableBottom="@drawable/ic_plus"
+                android:drawableTint="@color/white"
+                android:layout_marginEnd="4dp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,6 +138,17 @@
                 android:layout_height="wrap_content"
                 android:text="8.000,00"
                 android:textColor="@color/white" />
+
+
+            <Button
+                android:id="@+id/bt_subtract_total_value_edit_dream"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:backgroundTint="@color/black"
+                android:drawableBottom="@drawable/ic_subtract"
+                android:drawableTint="@color/white"
+                android:layout_marginEnd="4dp"
+                />
 
         </LinearLayout>
 

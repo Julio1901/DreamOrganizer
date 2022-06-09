@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "dreams")
 data class DreamDTO(
     @PrimaryKey (autoGenerate = true) val id: Int,
-    val name: String?,
-    val value: Float?,
+    var name: String,
+    var value: Float,
     @ColumnInfo(name = "total_money_reserved")
-    val totalMoneyReserved: Float?,
+    var totalMoneyReserved: Float,
     val image: ByteArray?
 )

@@ -7,6 +7,7 @@ import com.example.dreamorganizer.features.dreams.UseCase.GetDreamUseCase
 import com.example.dreamorganizer.features.dreams.UseCase.SetDreamUseCase
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
+import com.example.dreamorganizer.features.dreams.presentation.container.interact.TypeForCalculation
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -24,6 +25,8 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
             is DreamsInteract.AddNewDream -> addNewDream(interact.dream)
             is DreamsInteract.GetDreamFromDb -> getDreamFromDb(interact.id)
             is DreamsInteract.ChangeSelectedDreamId -> changeSelectedDreamId(interact.id)
+            is DreamsInteract.PlusOneMoreToTotalValue -> plusOneMoreToTotalValue(interact.typeForCalculation)
+            is DreamsInteract.SubtractOneFromTotalValue -> subtractOneFromTotalValue(interact.typeForCalculation)
         }
     }
 
@@ -52,6 +55,48 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
         }
     }
 
+    private fun plusOneMoreToTotalValue(typeForCalculation: TypeForCalculation){
+        if (typeForCalculation == TypeForCalculation.MONEY_RESERVED){
+            _selectedDream.value?.totalMoneyReserved.let {
+                if (it != null) {
+                    _selectedDream.value?.totalMoneyReserved = it + 1f
+                }
+                updateDreamLiveDate()
+            }
 
+        }else{
+           _selectedDream.value?.value.let {
+                if(it != null){
+                    _selectedDream.value?.value = it + 1f
+                }
+           }
+            updateDreamLiveDate()
+        }
+    }
+
+    private fun subtractOneFromTotalValue(typeForCalculation: TypeForCalculation){
+        if (typeForCalculation == TypeForCalculation.MONEY_RESERVED){
+            _selectedDream.value?.totalMoneyReserved.let {
+                if (it != null && it > 0) {
+                    _selectedDream.value?.totalMoneyReserved = it - 1f
+                }
+                updateDreamLiveDate()
+            }
+
+        }else{
+            _selectedDream.value?.value.let {
+                if(it != null && it > 0){
+                    _selectedDream.value?.value = it - 1f
+                }
+            }
+            updateDreamLiveDate()
+        }
+    }
+
+
+
+    private fun updateDreamLiveDate(){
+        _selectedDream.value = _selectedDream.value
+    }
 
 }

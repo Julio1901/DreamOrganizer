@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
+import com.example.dreamorganizer.features.dreams.presentation.container.interact.TypeForCalculation
 import com.example.dreamorganizer.features.dreams.viewModel.DreamFeaturesViewModel
 import com.example.dreamorganizer.util.ImageManager
 import com.google.android.material.imageview.ShapeableImageView
@@ -20,13 +21,17 @@ class EditDreamFragment : Fragment() {
 
     private lateinit var dreamImage: ShapeableImageView
     private lateinit var dreamName: TextView
-    private lateinit var totalMoneyReserved : TextView
+    private lateinit var totalMoneyReserved: TextView
     private lateinit var totalMoneyNeeded: TextView
     private lateinit var btnChangeValue: Button
     private lateinit var btnDeleteDream: ShapeableImageView
     private val dreamFeatureViewModel by sharedViewModel<DreamFeaturesViewModel>()
-    private lateinit var  imageManager : ImageManager
-    private val EXTRAS_DREAM_ID : String = "dream_id"
+    private lateinit var  imageManager: ImageManager
+    private lateinit var btnPlusMoneyReserved: Button
+    private lateinit var btnSubtractMoneyReserved: Button
+    private lateinit var btnPlusTotalValue: Button
+    private lateinit var btnSubtractTotalValue: Button
+    private val EXTRAS_DREAM_ID: String = "dream_id"
 
 
 
@@ -43,7 +48,9 @@ class EditDreamFragment : Fragment() {
         initViews(view)
         setUpObservers()
         prepareScreenWithPopulateInfo()
+        setUpListeners()
     }
+
 
 
     private fun initViews(view: View){
@@ -54,6 +61,10 @@ class EditDreamFragment : Fragment() {
             totalMoneyNeeded = it.findViewById(R.id.tv_total_money_needed_value_edit_dream)
             btnChangeValue = it.findViewById(R.id.bt_change_value_edit_dream)
             btnDeleteDream = it.findViewById(R.id.bt_delete_dream_edit_dream)
+            btnPlusMoneyReserved = it.findViewById(R.id.bt_plus_money_reserved_edit_dream)
+            btnSubtractMoneyReserved = it.findViewById(R.id.bt_subtract_money_reserved_edit_dream)
+            btnPlusTotalValue = it.findViewById(R.id.bt_plus_total_value_edit_dream)
+            btnSubtractTotalValue = it.findViewById(R.id.bt_subtract_total_value_edit_dream)
         }
 
         imageManager = ImageManager()
@@ -74,6 +85,26 @@ class EditDreamFragment : Fragment() {
         })
 
     }
+
+    private fun setUpListeners() {
+        btnPlusMoneyReserved.setOnClickListener {
+            dreamFeatureViewModel.interpret(DreamsInteract.PlusOneMoreToTotalValue(TypeForCalculation.MONEY_RESERVED))
+        }
+
+        btnPlusTotalValue.setOnClickListener {
+            dreamFeatureViewModel.interpret(DreamsInteract.PlusOneMoreToTotalValue(TypeForCalculation.TOTAL_VALUE))
+        }
+
+        btnSubtractMoneyReserved.setOnClickListener {
+            dreamFeatureViewModel.interpret(DreamsInteract.SubtractOneFromTotalValue(TypeForCalculation.MONEY_RESERVED))
+        }
+
+        btnSubtractTotalValue.setOnClickListener {
+            dreamFeatureViewModel.interpret(DreamsInteract.SubtractOneFromTotalValue(TypeForCalculation.TOTAL_VALUE))
+        }
+
+    }
+
 
 
     private fun prepareScreenWithPopulateInfo(){
