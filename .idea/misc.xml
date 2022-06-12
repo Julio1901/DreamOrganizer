@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/activity_add_new_dream_flow.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_edit_dream_flow.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15266815185546875" />
+        <entry key="app/src/main/res/layout/dialog_change_monetary_value.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_card_item.xml" value="0.75" />
         <entry key="app/src/main/res/layout/fragment_container_dream_detail.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_dfsglank.xml" value="0.24270833333333333" />
@@ -16,7 +17,7 @@
         <entry key="app/src/main/res/layout/fragment_dream_detail.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/fragment_edit_dream.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_edit_dream_container.xml" value="0.225" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.265777587890625" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home_container.xml" value="0.21388888888888888" />
         <entry key="app/src/main/res/layout/fragment_main_container.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/fragment_register_new_dream.xml" value="0.335" />

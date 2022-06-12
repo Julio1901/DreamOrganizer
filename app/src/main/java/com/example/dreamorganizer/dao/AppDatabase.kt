@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.dreamorganizer.features.dreams.dao.DreamDAO
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
+import com.example.dreamorganizer.model.TotalMoneyDTO
 
-@Database(entities = [DreamDTO :: class], version = 2)
+@Database(entities = [DreamDTO:: class, TotalMoneyDTO:: class], version = 3)
 abstract class AppDatabase : RoomDatabase(){
 
     abstract fun dreamDao(): DreamDAO
+    abstract fun totalMoneyDao(): TotalMoneyDAO
 
     companion object{
         fun getDatabaseAppInstance(context : Context) : AppDatabase{

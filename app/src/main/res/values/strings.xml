@@ -19,5 +19,10 @@
     <string name="click_here_to_insert_an_image">Click here to insert an image</string>
     <string name="default_blank_value"> </string>
     <string name="add_new_dream">Add new Dream</string>
+    <string name="monetary_value_description">R$ %d</string>
+    <string name="insert_the_monetary_value_here">Insert the monetary value here</string>
+    <string name="input_new_value">Input new value</string>
+    <string name="remove_money">Remove Money</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
