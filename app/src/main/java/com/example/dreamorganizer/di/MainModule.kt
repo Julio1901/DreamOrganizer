@@ -6,7 +6,7 @@ import com.example.dreamorganizer.features.dreams.presentation.container.DreamCo
 import com.example.dreamorganizer.features.dreams.repository.DreamsRepository
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.features.dreams.viewModel.DreamFeaturesViewModel
-import com.example.dreamorganizer.presentation.viewModel.HomeViewModel
+import com.example.dreamorganizer.presentation.viewModel.MainViewModel
 import com.example.dreamorganizer.repository.TotalMoneyRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -16,7 +16,7 @@ val mainModule = module {
     viewModel {NavigationViewModel()}
     viewModel { DreamFeaturesViewModel(get(), get(), get()) }
     viewModel { DreamContainerViewModel() }
-    viewModel { HomeViewModel(get(), get(), get(), get())}
+    viewModel { MainViewModel(get(), get(), get(), get())}
 }
 
 val useCase = module {

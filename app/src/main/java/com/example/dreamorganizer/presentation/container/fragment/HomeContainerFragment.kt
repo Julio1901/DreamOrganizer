@@ -13,10 +13,7 @@ import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.util.navigateToNavGraph
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
-import com.example.dreamorganizer.adapter.DreamAdapter
 import com.example.dreamorganizer.features.dreams.presentation.activity.EditDreamFlowActivity
-import com.example.dreamorganizer.presentation.viewModel.HomeViewModel
 
 class HomeContainerFragment : Fragment() {
 

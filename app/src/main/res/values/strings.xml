@@ -24,5 +24,6 @@
     <string name="input_new_value">Input new value</string>
     <string name="remove_money">Remove Money</string>
     <string name="cancel">Cancel</string>
+    <string name="you_dont_have_the_money_value_to_remove">Você não tem o valor em dinheiro para remover</string>
 
 </resources>

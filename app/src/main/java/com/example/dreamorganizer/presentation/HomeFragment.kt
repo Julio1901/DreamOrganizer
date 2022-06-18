@@ -15,9 +15,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.adapter.DreamAdapter
-import com.example.dreamorganizer.presentation.container.interact.HomeInteractEvent
+import com.example.dreamorganizer.features.dreams.viewModel.DreamFeaturesViewModel
+import com.example.dreamorganizer.presentation.container.interact.ChangeTotalMoneyValueOptions
+import com.example.dreamorganizer.presentation.container.interact.MainInteractEvent
 import com.example.dreamorganizer.presentation.container.interact.HomeNavigationEvent
-import com.example.dreamorganizer.presentation.viewModel.HomeViewModel
+import com.example.dreamorganizer.presentation.viewModel.MainViewModel
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.google.android.material.imageview.ShapeableImageView
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -32,7 +34,7 @@ class HomeFragment : Fragment() {
     lateinit var btnAddNewDream : Button
     lateinit var btnTotalMoney : ShapeableImageView
     private val navigationViewModel  by sharedViewModel<NavigationViewModel>()
-    private val homeViewModel by sharedViewModel<HomeViewModel>()
+    private val mainViewModel by sharedViewModel<MainViewModel>()
 
 
 
@@ -47,19 +49,19 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViews(view)
-        setupClicks()
-        setUpListeners()
+        setupListeners()
+        setUpObservers()
         populateDreamList()
         populateMonetaryValues()
 
     }
 
     private fun populateDreamList() {
-        homeViewModel.interpret(HomeInteractEvent.GetAllDreamFromDb)
+        mainViewModel.interpret(MainInteractEvent.GetAllDreamFromDb)
     }
 
     private fun populateMonetaryValues(){
-        homeViewModel.interpret(HomeInteractEvent.GetMoney)
+        mainViewModel.interpret(MainInteractEvent.GetMoney)
     }
 
     private fun initViews(view: View){
@@ -72,7 +74,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupClicks(){
+    private fun setupListeners(){
         btnAddNewDream.setOnClickListener {
            navigationViewModel.interpretNavigation(HomeNavigationEvent.OnNavigateToRegisterNewDreamGraph)
         }
@@ -81,14 +83,18 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setUpListeners(){
-        homeViewModel.listOfDreams.observe(viewLifecycleOwner, Observer {
+    private fun setUpObservers(){
+        mainViewModel.listOfDreams.observe(viewLifecycleOwner, Observer {
             recyclerViewDreamList.adapter = DreamAdapter(it, navigationViewModel)
         } )
 
-        homeViewModel.totalMoney.observe(viewLifecycleOwner, Observer {
+        mainViewModel.totalMoney.observe(viewLifecycleOwner, Observer {
             tvTotalMoneyValue.text = getString(R.string.monetary_value_description, it.totalMoney.toInt())
             tvRestOfTheMoneyValue.text = getString(R.string.monetary_value_description, it.restOfTheMoney.toInt())
+        })
+
+        mainViewModel.alertDialogMessage.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context, getString(it), Toast.LENGTH_LONG).show()
         })
     }
 
@@ -138,12 +144,12 @@ class HomeFragment : Fragment() {
     private fun handleWithChangeMoneyDialogData(textInput: EditText, updateMonetaryValuesOptions: UpdateMonetaryValuesOptions){
         if(checkValidateFields(textInput) && updateMonetaryValuesOptions == UpdateMonetaryValuesOptions.ADD_MONEY){
             Toast.makeText(context, "Monetary Value Update", Toast.LENGTH_SHORT).show()
-            homeViewModel.interpret(HomeInteractEvent.AddTotalMoney(textInput.text.toString().toFloat()))
+            mainViewModel.interpret(MainInteractEvent.AddTotalMoney(textInput.text.toString().toFloat()))
 
         }else if(checkValidateFields(textInput) && updateMonetaryValuesOptions == UpdateMonetaryValuesOptions.REMOVE_MONEY){
             Toast.makeText(context, "Monetary Value Update", Toast.LENGTH_SHORT).show()
             //TODO: Make business rule to display toast message saying that the account amount is less than the input amount
-            homeViewModel.interpret(HomeInteractEvent.AddTotalMoney(textInput.text.toString().toFloat()))
+            mainViewModel.interpret(MainInteractEvent.AddTotalMoney(textInput.text.toString().toFloat()))
 
         }
         else{
