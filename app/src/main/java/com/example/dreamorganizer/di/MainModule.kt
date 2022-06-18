@@ -14,7 +14,7 @@ import org.koin.dsl.module
 
 val mainModule = module {
     viewModel {NavigationViewModel()}
-    viewModel { DreamFeaturesViewModel(get(), get(), get()) }
+    viewModel { DreamFeaturesViewModel(get(), get(), get(), get(), get(), get()) }
     viewModel { DreamContainerViewModel() }
     viewModel { MainViewModel(get(), get(), get(), get())}
 }
@@ -27,6 +27,7 @@ val useCase = module {
     factory <InsertTotalMoneyUseCase> {InsertTotalMoneyUseCaseImpl(get())}
     factory <UpdateTotalMoneyUseCase> {UpdateTotalMoneyUseCaseImpl(get())}
     factory <DeleteDreamUseCase> {DeleteDreamUseCaseImpl(get())}
+    factory <UpdateDreamUseCase> {UpdateDreamUseCaseImpl(get())}
 }
 
 val repository = module {

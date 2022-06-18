@@ -1,21 +1,25 @@
 package com.example.dreamorganizer.features.dreams.presentation.fragments
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.dreamorganizer.R
+import com.example.dreamorganizer.features.dreams.model.DreamDTO
 import com.example.dreamorganizer.features.dreams.presentation.container.DreamContainerViewModel
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamContainerNavigationEvent
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.TypeForCalculation
 import com.example.dreamorganizer.features.dreams.viewModel.DreamFeaturesViewModel
-import com.example.dreamorganizer.presentation.container.interact.HomeNavigationEvent
-import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
+import com.example.dreamorganizer.presentation.viewModel.MainViewModel
 import com.example.dreamorganizer.util.ImageManager
 import com.google.android.material.imageview.ShapeableImageView
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -27,10 +31,10 @@ class EditDreamFragment : Fragment() {
     private lateinit var dreamName: TextView
     private lateinit var totalMoneyReserved: TextView
     private lateinit var totalMoneyNeeded: TextView
-    private lateinit var btnChangeValue: Button
     private lateinit var btnDeleteDream: ShapeableImageView
     private val dreamFeatureViewModel by sharedViewModel<DreamFeaturesViewModel>()
     private val navigateViewModel by sharedViewModel<DreamContainerViewModel>()
+    private val mainViewModel by sharedViewModel<MainViewModel>()
     private lateinit var  imageManager: ImageManager
     private lateinit var btnPlusMoneyReserved: Button
     private lateinit var btnSubtractMoneyReserved: Button
@@ -78,16 +82,16 @@ class EditDreamFragment : Fragment() {
 
     private fun setUpObservers(){
         dreamFeatureViewModel.selectedDream.observe(viewLifecycleOwner, Observer {
-
             it.image?.let {
                 dreamImage.setImageBitmap(imageManager.convertBankImageToDisplay(it))
             }
-
             dreamName.text = it.name
             totalMoneyNeeded.text = it.value.toString()
             totalMoneyReserved.text = it.totalMoneyReserved.toString()
+        })
 
-
+        dreamFeatureViewModel.toastMessage.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context, getString(it), Toast.LENGTH_SHORT).show()
         })
 
     }
@@ -110,7 +114,12 @@ class EditDreamFragment : Fragment() {
         }
 
         btnBackToHome.setOnClickListener {
-            navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+            if(dreamFeatureViewModel.dreamHasEdited){
+                showHandleWithEditedDreamAlertDialog()
+            }else{
+                navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+            }
+
         }
 
         btnDeleteDream.setOnClickListener {
@@ -122,6 +131,29 @@ class EditDreamFragment : Fragment() {
 
     }
 
+    private fun showHandleWithEditedDreamAlertDialog() {
+            val dialog = AlertDialog.Builder(requireActivity())
+            val inflater = requireActivity().layoutInflater
+
+            //val view: View = inflater.inflate(R.layout.dialog_change_monetary_value, null)
+
+            dialog.setCancelable(false)
+                .setPositiveButton(R.string.save_changes, DialogInterface.OnClickListener { dialog, id ->
+                    dreamFeatureViewModel.interpret(DreamsInteract.UpdateDream)
+                    dreamFeatureViewModel.interpret(DreamsInteract.UpdateUserTotalMoney)
+                    navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+                }
+                )
+                .setNegativeButton(R.string.discart_changes,
+                    DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
+                        navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+                    })
+
+
+            dialog.show()
+
+    }
 
 
     private fun prepareScreenWithPopulateInfo(){
@@ -129,6 +161,7 @@ class EditDreamFragment : Fragment() {
             it?.get(EXTRAS_DREAM_ID)
         }
         dreamFeatureViewModel.interpret(DreamsInteract.ChangeSelectedDreamId(dreamId))
+        dreamFeatureViewModel.interpret(DreamsInteract.GetTotalUserMoney)
     }
 
 

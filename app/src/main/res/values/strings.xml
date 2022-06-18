@@ -27,5 +27,8 @@
     <string name="you_dont_have_the_money_value_to_remove">You Don\'t have the money value to remove</string>
     <string name="monetary_value_update">Monetary Value Update</string>
     <string name="monetary_value_not_update_error_message">Monetary Value Not Update, please type only numbers.</string>
+    <string name="discart_changes">Discart Changes</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="you_have_no_more_money_to_add">You have no more money to add</string>
 
 </resources>

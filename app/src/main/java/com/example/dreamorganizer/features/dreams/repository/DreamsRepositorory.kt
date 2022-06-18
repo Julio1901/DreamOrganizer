@@ -19,5 +19,5 @@ class DreamsRepository(context: Context) {
 
     suspend fun deleteDream (dreamDTO: DreamDTO) {daoInstance.deleteDream(dreamDTO)}
 
-
+    suspend fun updateDream(dream: DreamDTO){daoInstance.updateDream(dream)}
 }

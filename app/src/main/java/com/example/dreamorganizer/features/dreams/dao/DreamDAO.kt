@@ -1,10 +1,8 @@
 package com.example.dreamorganizer.features.dreams.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
+import com.example.dreamorganizer.model.TotalMoneyDTO
 
 @Dao
 interface DreamDAO {
@@ -20,5 +18,8 @@ interface DreamDAO {
 
     @Delete
     suspend fun deleteDream(dreamDTO: DreamDTO)
+
+    @Update
+    suspend fun updateDream(dreamDTO: DreamDTO)
 
 }

@@ -9,6 +9,9 @@ sealed class DreamsInteract{
     data class ChangeSelectedDreamId(val id: Any?) : DreamsInteract()
     data class PlusOneMoreToTotalValue(val typeForCalculation: TypeForCalculation) : DreamsInteract()
     data class SubtractOneFromTotalValue(val typeForCalculation: TypeForCalculation) : DreamsInteract()
+    object GetTotalUserMoney: DreamsInteract()
+    object UpdateDream : DreamsInteract()
+    object UpdateUserTotalMoney: DreamsInteract()
 }
 
 enum class TypeForCalculation{

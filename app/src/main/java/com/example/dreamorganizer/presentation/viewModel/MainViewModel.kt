@@ -34,6 +34,8 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
         get() = _alertDialogMessage
 
 
+
+
     fun interpret(mainInteract: MainInteractEvent){
         when (mainInteract){
             is MainInteractEvent.GetAllDreamFromDb -> getAllDreamsFromDb()
