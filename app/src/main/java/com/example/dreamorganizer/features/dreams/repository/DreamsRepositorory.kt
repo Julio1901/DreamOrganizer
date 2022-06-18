@@ -17,4 +17,7 @@ class DreamsRepository(context: Context) {
 
     suspend fun getAllDreams() = daoInstance.getAll()
 
+    suspend fun deleteDream (dreamDTO: DreamDTO) {daoInstance.deleteDream(dreamDTO)}
+
+
 }

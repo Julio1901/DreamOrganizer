@@ -1,7 +1,6 @@
 package com.example.dreamorganizer.features.dreams.presentation.container
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,23 +15,19 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterNewDreamContainerFragment : Fragment() {
 
-   private val dreamContainerViewModel : DreamContainerViewModel by sharedViewModel()
+   private val navigationDreamViewModel : DreamContainerViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_register_new_dream_container, container, false)
-
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dreamContainerViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
+        navigationDreamViewModel.navigationEvent.observe(viewLifecycleOwner, Observer {
             handleNavigation(it)
         })
 

@@ -4,6 +4,7 @@ import com.example.dreamorganizer.features.dreams.model.DreamDTO
 
 sealed class DreamsInteract{
     data class AddNewDream (val dream : DreamDTO) : DreamsInteract()
+    object DeleteDream : DreamsInteract()
     data class GetDreamFromDb (val id: Int) : DreamsInteract()
     data class ChangeSelectedDreamId(val id: Any?) : DreamsInteract()
     data class PlusOneMoreToTotalValue(val typeForCalculation: TypeForCalculation) : DreamsInteract()

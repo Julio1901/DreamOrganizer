@@ -3,6 +3,7 @@ package com.example.dreamorganizer.features.dreams.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.dreamorganizer.features.dreams.UseCase.DeleteDreamUseCase
 import com.example.dreamorganizer.features.dreams.UseCase.GetDreamUseCase
 import com.example.dreamorganizer.features.dreams.UseCase.SetDreamUseCase
 import com.example.dreamorganizer.features.dreams.model.DreamDTO
@@ -12,7 +13,8 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
-                              private val setDreamUseCase: SetDreamUseCase) : ViewModel(){
+                              private val setDreamUseCase: SetDreamUseCase,
+                              private val deleteDreamUseCase: DeleteDreamUseCase) : ViewModel(){
 
 
     private val _selectedDream = MutableLiveData<DreamDTO>()
@@ -23,6 +25,7 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
     fun interpret (interact: DreamsInteract){
         when (interact){
             is DreamsInteract.AddNewDream -> addNewDream(interact.dream)
+            is DreamsInteract.DeleteDream -> deleteDream()
             is DreamsInteract.GetDreamFromDb -> getDreamFromDb(interact.id)
             is DreamsInteract.ChangeSelectedDreamId -> changeSelectedDreamId(interact.id)
             is DreamsInteract.PlusOneMoreToTotalValue -> plusOneMoreToTotalValue(interact.typeForCalculation)
@@ -36,6 +39,16 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
         viewModelScope.launch {
             setDreamUseCase.execute(dreamDTO)
         }
+    }
+
+    private fun deleteDream(){
+         viewModelScope.launch {
+             _selectedDream.value.let {
+                 if (it != null){
+                     deleteDreamUseCase.execute(it)
+                 }
+             }
+         }
     }
 
     private fun getDreamFromDb(id: Int){

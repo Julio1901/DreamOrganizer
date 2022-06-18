@@ -9,9 +9,13 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.example.dreamorganizer.R
+import com.example.dreamorganizer.features.dreams.presentation.container.DreamContainerViewModel
+import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamContainerNavigationEvent
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.TypeForCalculation
 import com.example.dreamorganizer.features.dreams.viewModel.DreamFeaturesViewModel
+import com.example.dreamorganizer.presentation.container.interact.HomeNavigationEvent
+import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.example.dreamorganizer.util.ImageManager
 import com.google.android.material.imageview.ShapeableImageView
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -26,11 +30,13 @@ class EditDreamFragment : Fragment() {
     private lateinit var btnChangeValue: Button
     private lateinit var btnDeleteDream: ShapeableImageView
     private val dreamFeatureViewModel by sharedViewModel<DreamFeaturesViewModel>()
+    private val navigateViewModel by sharedViewModel<DreamContainerViewModel>()
     private lateinit var  imageManager: ImageManager
     private lateinit var btnPlusMoneyReserved: Button
     private lateinit var btnSubtractMoneyReserved: Button
     private lateinit var btnPlusTotalValue: Button
     private lateinit var btnSubtractTotalValue: Button
+    private lateinit var btnBackToHome: ShapeableImageView
     private val EXTRAS_DREAM_ID: String = "dream_id"
 
 
@@ -65,6 +71,7 @@ class EditDreamFragment : Fragment() {
             btnSubtractMoneyReserved = it.findViewById(R.id.bt_subtract_money_reserved_edit_dream)
             btnPlusTotalValue = it.findViewById(R.id.bt_plus_total_value_edit_dream)
             btnSubtractTotalValue = it.findViewById(R.id.bt_subtract_total_value_edit_dream)
+            btnBackToHome = it.findViewById(R.id.bt_back_to_home_edit_dream)
         }
 
         imageManager = ImageManager()
@@ -101,6 +108,17 @@ class EditDreamFragment : Fragment() {
 
         btnSubtractTotalValue.setOnClickListener {
             dreamFeatureViewModel.interpret(DreamsInteract.SubtractOneFromTotalValue(TypeForCalculation.TOTAL_VALUE))
+        }
+
+        btnBackToHome.setOnClickListener {
+            navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+        }
+
+        btnDeleteDream.setOnClickListener {
+            //TODO: Validate before delete with alert dialog
+            dreamFeatureViewModel.interpret(DreamsInteract.DeleteDream)
+            //TODO: return dream money from total value (make this logic in viewModel)
+            navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
         }
 
     }

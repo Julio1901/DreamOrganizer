@@ -1,10 +1,7 @@
 package com.example.dreamorganizer.di
 
 import com.example.dreamorganizer.UseCase.*
-import com.example.dreamorganizer.features.dreams.UseCase.GetDreamUseCase
-import com.example.dreamorganizer.features.dreams.UseCase.GetDreamUseCaseImpl
-import com.example.dreamorganizer.features.dreams.UseCase.SetDreamUseCase
-import com.example.dreamorganizer.features.dreams.UseCase.SetDreamUseCaseImpl
+import com.example.dreamorganizer.features.dreams.UseCase.*
 import com.example.dreamorganizer.features.dreams.presentation.container.DreamContainerViewModel
 import com.example.dreamorganizer.features.dreams.repository.DreamsRepository
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
@@ -17,7 +14,7 @@ import org.koin.dsl.module
 
 val mainModule = module {
     viewModel {NavigationViewModel()}
-    viewModel { DreamFeaturesViewModel(get(), get()) }
+    viewModel { DreamFeaturesViewModel(get(), get(), get()) }
     viewModel { DreamContainerViewModel() }
     viewModel { HomeViewModel(get(), get(), get(), get())}
 }
@@ -29,7 +26,7 @@ val useCase = module {
     factory <GetMoneyUseCase> {GetMoneyUseCaseImpl(get()) }
     factory <InsertTotalMoneyUseCase> {InsertTotalMoneyUseCaseImpl(get())}
     factory <UpdateTotalMoneyUseCase> {UpdateTotalMoneyUseCaseImpl(get())}
-
+    factory <DeleteDreamUseCase> {DeleteDreamUseCaseImpl(get())}
 }
 
 val repository = module {
