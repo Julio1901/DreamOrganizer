@@ -143,17 +143,14 @@ class HomeFragment : Fragment() {
 
     private fun handleWithChangeMoneyDialogData(textInput: EditText, updateMonetaryValuesOptions: UpdateMonetaryValuesOptions){
         if(checkValidateFields(textInput) && updateMonetaryValuesOptions == UpdateMonetaryValuesOptions.ADD_MONEY){
-            Toast.makeText(context, "Monetary Value Update", Toast.LENGTH_SHORT).show()
-            mainViewModel.interpret(MainInteractEvent.AddTotalMoney(textInput.text.toString().toFloat()))
+            mainViewModel.interpret(MainInteractEvent.ChangeTotalMoneyValue(textInput.text.toString().toFloat(), ChangeTotalMoneyValueOptions.ADD_VALUE))
 
         }else if(checkValidateFields(textInput) && updateMonetaryValuesOptions == UpdateMonetaryValuesOptions.REMOVE_MONEY){
-            Toast.makeText(context, "Monetary Value Update", Toast.LENGTH_SHORT).show()
-            //TODO: Make business rule to display toast message saying that the account amount is less than the input amount
-            mainViewModel.interpret(MainInteractEvent.AddTotalMoney(textInput.text.toString().toFloat()))
+            mainViewModel.interpret(MainInteractEvent.ChangeTotalMoneyValue(textInput.text.toString().toFloat(), ChangeTotalMoneyValueOptions.REMOVE_VALUE))
 
         }
         else{
-            Toast.makeText(context, "Monetary Value Not Update, check value and try again", Toast.LENGTH_LONG).show()
+            mainViewModel.interpret(MainInteractEvent.ChangeAlertDialogMessage(R.string.monetary_value_not_update_error_message))
         }
 
 

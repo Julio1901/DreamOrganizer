@@ -38,9 +38,8 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
         when (mainInteract){
             is MainInteractEvent.GetAllDreamFromDb -> getAllDreamsFromDb()
             is MainInteractEvent.GetMoney -> getTotalMoney()
-            //TODO remove this line (addTotalMoney)
-            is MainInteractEvent.AddTotalMoney -> plusTotalMoney(mainInteract.totalMoneyValue)
             is MainInteractEvent.ChangeTotalMoneyValue -> changeTotalMoneyValue(mainInteract.totalMoneyValue, mainInteract.changeTotalMoneyValueOptions)
+            is MainInteractEvent.ChangeAlertDialogMessage -> changeAlertDialogMessage(mainInteract.stringResourceMessage)
         }
     }
 
@@ -51,8 +50,6 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
         }else if(changeTotalMoneyValueOptions == ChangeTotalMoneyValueOptions.REMOVE_VALUE){
             decreaseTotalValue(value)
         }
-
-        //TODO Make an observer mutableLiveDate toast here, and change value to observer in container
     }
 
 
@@ -75,6 +72,7 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
                 if(it != null){
                     updateTotalMoneyUseCase.execute(it)
                     _totalMoney.value = it
+                    changeAlertDialogMessage(R.string.monetary_value_update)
                 }
             }
           
@@ -100,6 +98,7 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
                     if(it != null){
                         updateTotalMoneyUseCase.execute(it)
                         _totalMoney.value = it
+                        changeAlertDialogMessage(R.string.monetary_value_update)
                     }
                 }
             }else{

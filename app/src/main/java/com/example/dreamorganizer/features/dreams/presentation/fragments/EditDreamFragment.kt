@@ -65,7 +65,6 @@ class EditDreamFragment : Fragment() {
             dreamName = it.findViewById(R.id.tv_dream_name_edit_dream)
             totalMoneyReserved = it.findViewById(R.id.tv_total_money_reserved_value_edit_dream)
             totalMoneyNeeded = it.findViewById(R.id.tv_total_money_needed_value_edit_dream)
-            btnChangeValue = it.findViewById(R.id.bt_change_value_edit_dream)
             btnDeleteDream = it.findViewById(R.id.bt_delete_dream_edit_dream)
             btnPlusMoneyReserved = it.findViewById(R.id.bt_plus_money_reserved_edit_dream)
             btnSubtractMoneyReserved = it.findViewById(R.id.bt_subtract_money_reserved_edit_dream)

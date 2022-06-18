@@ -53,56 +53,22 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="end"
+            android:layout_gravity="left"
             android:orientation="horizontal"
 
             >
 
-            <Button
-                android:id="@+id/bt_plus_money_reserved_edit_dream"
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:backgroundTint="@color/black"
-                android:drawableBottom="@drawable/ic_plus"
-                android:drawableTint="@color/white"
-                android:layout_marginEnd="4dp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:text="Money reserved  R$"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/tv_total_money_reserved_value_edit_dream"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2.400,00"
-                android:textColor="@color/white" />
-
-            <Button
-                android:id="@+id/bt_subtract_money_reserved_edit_dream"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:backgroundTint="@color/black"
-                android:drawableBottom="@drawable/ic_subtract"
-                android:drawableTint="@color/white"
-                android:layout_marginEnd="4dp"
-                />
 
 
         </LinearLayout>
@@ -110,45 +76,126 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="end"
+            android:layout_gravity="left"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/bt_plus_total_value_edit_dream"
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:backgroundTint="@color/black"
-                android:drawableBottom="@drawable/ic_plus"
-                android:drawableTint="@color/white"
-                android:layout_marginEnd="4dp"
-                />
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/plus_buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:gravity="start"
-                android:text="Total Value  R$"
-                android:textColor="@color/white" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_total_money_needed_value_edit_dream"
+                <Button
+                    android:id="@+id/bt_plus_money_reserved_edit_dream"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/black"
+                    android:drawableBottom="@drawable/ic_plus"
+                    android:drawableTint="@color/white"
+                    android:layout_marginEnd="4dp"
+                    />
+
+                <Button
+                    android:id="@+id/bt_plus_total_value_edit_dream"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/black"
+                    android:drawableBottom="@drawable/ic_plus"
+                    android:drawableTint="@color/white"
+                    android:layout_marginEnd="4dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/values_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="8.000,00"
-                android:textColor="@color/white" />
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="Money reserved  R$"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_total_money_reserved_value_edit_dream"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2.400,00"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
 
 
-            <Button
-                android:id="@+id/bt_subtract_total_value_edit_dream"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
-                android:backgroundTint="@color/black"
-                android:drawableBottom="@drawable/ic_subtract"
-                android:drawableTint="@color/white"
-                android:layout_marginEnd="4dp"
-                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp"
+                >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="start"
+                    android:text="Total Value  R$"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_total_money_needed_value_edit_dream"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8.000,00"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_subtract_buttons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/bt_subtract_money_reserved_edit_dream"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:backgroundTint="@color/black"
+                    android:drawableBottom="@drawable/ic_subtract"
+                    android:drawableTint="@color/white"
+                    android:layout_marginEnd="4dp"
+                    />
+
+
+
+
+                <Button
+                    android:id="@+id/bt_subtract_total_value_edit_dream"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:backgroundTint="@color/black"
+                    android:drawableBottom="@drawable/ic_subtract"
+                    android:drawableTint="@color/white"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginTop="4dp"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -180,16 +227,6 @@
                 app:strokeColor="@color/white"
                 app:strokeWidth="3dp"
                 app:srcCompat="@drawable/ic_close" />
-
-
-            <Button
-                android:id="@+id/bt_change_value_edit_dream"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Change value"
-                android:backgroundTint="@color/old_gold"
-                android:layout_marginStart="68dp"
-                />
 
 
 

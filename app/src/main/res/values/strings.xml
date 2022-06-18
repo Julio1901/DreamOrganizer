@@ -24,6 +24,8 @@
     <string name="input_new_value">Input new value</string>
     <string name="remove_money">Remove Money</string>
     <string name="cancel">Cancel</string>
-    <string name="you_dont_have_the_money_value_to_remove">Você não tem o valor em dinheiro para remover</string>
+    <string name="you_dont_have_the_money_value_to_remove">You Don\'t have the money value to remove</string>
+    <string name="monetary_value_update">Monetary Value Update</string>
+    <string name="monetary_value_not_update_error_message">Monetary Value Not Update, please type only numbers.</string>
 
 </resources>
