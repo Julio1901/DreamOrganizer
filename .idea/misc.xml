@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.206" />
+        <entry key="app/src/main/res/drawable/shape_silver_gradient_background.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/test_shape.xml" value="0.2485" />
         <entry key="app/src/main/res/layout/activity_add_new_dream_flow.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_edit_dream_flow.xml" value="0.24270833333333333" />

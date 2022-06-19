@@ -148,10 +148,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:text="@string/add_new_dream"
-        android:backgroundTint="@color/old_gold"
         app:shapeAppearanceOverlay="@style/Circular"
         app:strokeWidth="3dp"
         app:strokeColor="@color/graphite"
+        android:backgroundTint="@color/graphite"
+        android:textColor="@color/old_gold"
+        android:elevation="10dp"
         />
 
 
