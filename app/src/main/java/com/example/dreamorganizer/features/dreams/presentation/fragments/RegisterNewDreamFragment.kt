@@ -19,6 +19,7 @@ import com.example.dreamorganizer.features.dreams.presentation.container.DreamCo
 import com.example.dreamorganizer.features.dreams.presentation.container.interact.DreamsInteract
 import com.example.dreamorganizer.util.ImageManager
 import com.example.dreamorganizer.features.dreams.viewModel.DreamFeaturesViewModel
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -36,6 +37,10 @@ class RegisterNewDreamFragment : Fragment() {
     private lateinit var imageManager : ImageManager
     private lateinit var ivButtonCameraSelectImageFromGallery : ImageView
     private lateinit var btnSaveDream : Button
+    private lateinit var btnBackToHome: ShapeableImageView
+    private val mainViewModel  by sharedViewModel<DreamFeaturesViewModel>()
+    private val dreamContainerViewModel by sharedViewModel<DreamContainerViewModel>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,43 +55,6 @@ class RegisterNewDreamFragment : Fragment() {
         initViews(view)
         setupListeners()
 
-        val mainViewModel  by sharedViewModel<DreamFeaturesViewModel>()
-        val dreamContainerViewModel by sharedViewModel<DreamContainerViewModel>()
-
-
-
-
-        btnSaveDream.setOnClickListener {
-
-            if(checkValidateFields()){
-                /* Temporary treatment. Check for a better way to
-                * accomplish this
-                * */
-                if (ivDisplayDreamImage.drawable == null){
-                    //Set default image case image field has null
-                    ivDisplayDreamImage.setImageResource(R.drawable.ic_camera)
-                }
-
-                val currentImage = ivDisplayDreamImage.drawable
-                val imageToSave = currentImage.toBitmap()
-                val imageConverted = imageManager.saveImageInBank(imageToSave)
-
-                val newDreamToSave = DreamDTO(id= 0,
-                    name = textInputDreamName.text.toString(),
-                    value= textInputDreamValue.text.toString().toFloat(),
-                    totalMoneyReserved = 0F ,image = imageConverted
-                )
-
-                mainViewModel.interpret(DreamsInteract.AddNewDream(newDreamToSave))
-                dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
-            }
-
-        }
-
-
-
-
-
     }
 
     private fun initViews(view: View){
@@ -98,11 +66,11 @@ class RegisterNewDreamFragment : Fragment() {
             ivDisplayDreamImage = it.findViewById(R.id.iv_display_dream_image_add_new_dream)
             ivButtonCameraSelectImageFromGallery = it.findViewById(R.id.iv_button_camera_add_new_dream)
             btnSaveDream = it.findViewById(R.id.bt_save_add_new_dream)
+            btnBackToHome = it.findViewById(R.id.bt_back_to_home_create_dream)
         }
 
         imageManager = ImageManager()
     }
-
 
     private fun setupListeners(){
         textInputDreamName.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
@@ -128,6 +96,35 @@ class RegisterNewDreamFragment : Fragment() {
             openGalleryForImage()
         }
 
+        btnSaveDream.setOnClickListener {
+            if(checkValidateFields()){
+                /* Temporary treatment. Check for a better way to
+                * accomplish this
+                * */
+                if (ivDisplayDreamImage.drawable == null){
+                    //Set default image case image field has null
+                    ivDisplayDreamImage.setImageResource(R.drawable.ic_camera)
+                }
+
+                val currentImage = ivDisplayDreamImage.drawable
+                val imageToSave = currentImage.toBitmap()
+                val imageConverted = imageManager.saveImageInBank(imageToSave)
+
+                val newDreamToSave = DreamDTO(id= 0,
+                    name = textInputDreamName.text.toString(),
+                    value= textInputDreamValue.text.toString().toFloat(),
+                    totalMoneyReserved = 0F ,image = imageConverted
+                )
+
+                mainViewModel.interpret(DreamsInteract.AddNewDream(newDreamToSave))
+                dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+            }
+
+        }
+
+        btnBackToHome.setOnClickListener {
+            dreamContainerViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+        }
 
     }
 

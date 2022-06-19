@@ -82,6 +82,8 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
              _selectedDream.value.let {
                  if (it != null){
                      deleteDreamUseCase.execute(it)
+                     totalMoney.restOfTheMoney += it.totalMoneyReserved
+                     updateTotalMoney()
                  }
              }
          }

@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
     lateinit var tvRestOfTheMoneyValue : TextView
     lateinit var btnAddNewDream : Button
     lateinit var btnTotalMoney : ShapeableImageView
-    //lateinit var progressBarDreamImage : ProgressBar
     private val navigationViewModel  by sharedViewModel<NavigationViewModel>()
     private val mainViewModel by sharedViewModel<MainViewModel>()
 
@@ -163,12 +162,10 @@ class HomeFragment : Fragment() {
     private fun checkValidateFields(textInput: EditText) : Boolean{
 
         if(textInput.text!!.isBlank() || textInput.text!!.isEmpty()){
-            //textInput.helperText = getString(R.string.required_text_input_warning)
             return false
         }
 
         if (textInput.text!!.isBlank() || textInput.text!!.isEmpty()){
-            //textInputLayoutDreamValue.helperText = getString(R.string.required_text_input_warning)
             return false
         }
 
@@ -178,7 +175,7 @@ class HomeFragment : Fragment() {
                 val valueConverted = textInput.text.toString().toFloat()
                 return true
             }catch (e : Exception){
-                //textInputLayoutDreamValue.helperText = getString(R.string.invalid_value_this_field_requires_a_numeral)
+               //TODO: Log error here
                 return false
             }
         }

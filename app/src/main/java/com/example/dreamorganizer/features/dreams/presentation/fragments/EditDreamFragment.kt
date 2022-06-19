@@ -123,10 +123,7 @@ class EditDreamFragment : Fragment() {
         }
 
         btnDeleteDream.setOnClickListener {
-            //TODO: Validate before delete with alert dialog
-            dreamFeatureViewModel.interpret(DreamsInteract.DeleteDream)
-            //TODO: return dream money from total value (make this logic in viewModel)
-            navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+            showDeleteDialogAlert()
         }
 
     }
@@ -134,8 +131,6 @@ class EditDreamFragment : Fragment() {
     private fun showHandleWithEditedDreamAlertDialog() {
             val dialog = AlertDialog.Builder(requireActivity())
             val inflater = requireActivity().layoutInflater
-
-            //val view: View = inflater.inflate(R.layout.dialog_change_monetary_value, null)
 
             dialog.setCancelable(false)
                 .setPositiveButton(R.string.save_changes, DialogInterface.OnClickListener { dialog, id ->
@@ -149,9 +144,27 @@ class EditDreamFragment : Fragment() {
                         dialog.cancel()
                         navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
                     })
-
-
+            dialog.setTitle(R.string.dream_edited_dialog_description)
             dialog.show()
+    }
+
+    private fun showDeleteDialogAlert() {
+        val dialog = AlertDialog.Builder(requireActivity())
+        val inflater = requireActivity().layoutInflater
+
+        dialog.setCancelable(false)
+            .setPositiveButton(R.string.delete, DialogInterface.OnClickListener { dialog, id ->
+                dreamFeatureViewModel.interpret(DreamsInteract.DeleteDream)
+                navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
+
+            }
+            )
+            .setNegativeButton(R.string.cancel,
+                DialogInterface.OnClickListener { dialog, id ->
+                    dialog.cancel()
+                })
+        dialog.setTitle(R.string.cancel_dialog_alert_description)
+        dialog.show()
 
     }
 

@@ -30,5 +30,8 @@
     <string name="discart_changes">Discart Changes</string>
     <string name="save_changes">Save Changes</string>
     <string name="you_have_no_more_money_to_add">You have no more money to add</string>
+    <string name="delete">Delete</string>
+    <string name="cancel_dialog_alert_description">Are you sure you want to delete?</string>
+    <string name="dream_edited_dialog_description">Modifications have been made. Do you want to save them?</string>
 
 </resources>
