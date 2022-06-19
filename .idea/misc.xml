@@ -5,13 +5,14 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.206" />
+        <entry key="app/src/main/res/drawable/shape_circular_progress_bar.xml" value="0.1685" />
         <entry key="app/src/main/res/drawable/shape_silver_gradient_background.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/test_shape.xml" value="0.2485" />
         <entry key="app/src/main/res/layout/activity_add_new_dream_flow.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_edit_dream_flow.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15266815185546875" />
         <entry key="app/src/main/res/layout/dialog_change_monetary_value.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_card_item.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/fragment_card_item.xml" value="1.0" />
         <entry key="app/src/main/res/layout/fragment_container_dream_detail.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_dfsglank.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/fragment_dream_container.xml" value="0.20462962962962963" />

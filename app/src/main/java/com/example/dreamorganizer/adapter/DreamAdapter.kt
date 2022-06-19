@@ -1,8 +1,10 @@
 package com.example.dreamorganizer.adapter
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
@@ -20,13 +22,19 @@ class DreamAdapter (private val dreamList : List<DreamDTO>,
 
 
 
+
     class DreamViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val dreamImage : ShapeableImageView
         val dreamTitle : TextView
+        val progressBarDreamImage : ProgressBar
+
+
 
         init {
             dreamImage = view.findViewById(R.id.siv_card_view_repository_list_author_picture)
             dreamTitle = view.findViewById(R.id.tv_car_view_repository_list_dream_title)
+            progressBarDreamImage = view.findViewById(R.id.pb_dream_image_home)
+
         }
     }
 
@@ -48,10 +56,36 @@ class DreamAdapter (private val dreamList : List<DreamDTO>,
             navigationViewModel.interpretNavigation(HomeNavigationEvent.OnNavigateToDreamDetail(item.id))
         }
 
+        handleWithProgressBarStyle(holder.progressBarDreamImage, holder.itemView, item)
 
     }
 
     override fun getItemCount() = dreamList.size
+
+    private fun handleWithProgressBarStyle(progressBar: ProgressBar, view: View, dreamDTO: DreamDTO){
+
+        val aQuarterOfTheValue = dreamDTO.value / 4
+
+        progressBar.max = dreamDTO.value.toInt()
+        progressBar.progress = dreamDTO.totalMoneyReserved.toInt()
+
+
+        if (dreamDTO.totalMoneyReserved <= aQuarterOfTheValue){
+            progressBar.setProgressTintList(ColorStateList.valueOf(view.resources.getColor(R.color.red)))
+        }
+
+        if (dreamDTO.totalMoneyReserved > aQuarterOfTheValue && dreamDTO.totalMoneyReserved <= (aQuarterOfTheValue * 2)){
+            progressBar.setProgressTintList(ColorStateList.valueOf(view.resources.getColor(R.color.orange)))
+        }
+
+        if (dreamDTO.totalMoneyReserved > (aQuarterOfTheValue * 2) && dreamDTO.totalMoneyReserved < dreamDTO.value){
+            progressBar.setProgressTintList(ColorStateList.valueOf(view.resources.getColor(R.color.yellow)))
+        }
+
+        if(dreamDTO.totalMoneyReserved == dreamDTO.value){
+            progressBar.setProgressTintList(ColorStateList.valueOf(view.resources.getColor(R.color.green)))
+        }
+    }
 
 
 }

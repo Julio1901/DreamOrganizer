@@ -2,14 +2,13 @@ package com.example.dreamorganizer.presentation
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.compose.ui.graphics.Color
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +32,7 @@ class HomeFragment : Fragment() {
     lateinit var tvRestOfTheMoneyValue : TextView
     lateinit var btnAddNewDream : Button
     lateinit var btnTotalMoney : ShapeableImageView
+    //lateinit var progressBarDreamImage : ProgressBar
     private val navigationViewModel  by sharedViewModel<NavigationViewModel>()
     private val mainViewModel by sharedViewModel<MainViewModel>()
 
@@ -53,7 +53,7 @@ class HomeFragment : Fragment() {
         setUpObservers()
         populateDreamList()
         populateMonetaryValues()
-
+        //progressBarDreamImage.setProgressTintList(ColorStateList.valueOf(resources.getColor(R.color.graphite)))
     }
 
     private fun populateDreamList() {
@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
             btnTotalMoney = it.findViewById(R.id.bt_total_money_home)
             tvTotalMoneyValue = it.findViewById(R.id.tv_total_money_value_home)
             tvRestOfTheMoneyValue = it.findViewById(R.id.tv_rest_of_the_money_value_home)
+           // progressBarDreamImage = it.findViewById(R.id.pb_dream_image_home)
         }
     }
 
@@ -96,6 +97,8 @@ class HomeFragment : Fragment() {
         mainViewModel.alertDialogMessage.observe(viewLifecycleOwner, Observer {
             Toast.makeText(context, getString(it), Toast.LENGTH_LONG).show()
         })
+
+
     }
 
     private fun showChangeMoneyDialog() {

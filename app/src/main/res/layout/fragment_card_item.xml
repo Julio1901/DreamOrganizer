@@ -8,22 +8,41 @@
     android:paddingBottom="8dp"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/siv_card_view_repository_list_author_picture"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/grey"
-        android:paddingStart="8dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="4dp"
-        android:src="@drawable/iphone_dream_photo"
-        android:scaleType="fitCenter"
-        app:strokeWidth="3dp"
-        app:strokeColor="@color/green"
-        app:shapeAppearanceOverlay="@style/Circular" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/siv_card_view_repository_list_author_picture"
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/grey"
+            android:paddingStart="12dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="2dp"
+            android:src="@drawable/iphone_dream_photo"
+            android:scaleType="fitCenter"
+            app:shapeAppearanceOverlay="@style/Circular" />
+
+        <ProgressBar
+            android:id="@+id/pb_dream_image_home"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:padding="1dp"
+            android:progressDrawable="@drawable/shape_circular_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:progress="100"
+            android:layout_alignLeft="@+id/siv_card_view_repository_list_author_picture"
+            android:layout_alignTop="@+id/siv_card_view_repository_list_author_picture"        />
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/tv_car_view_repository_list_dream_title"
