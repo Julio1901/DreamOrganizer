@@ -51,6 +51,8 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
             is DreamsInteract.UpdateDream -> updateDream()
             is DreamsInteract.GetTotalUserMoney -> getTotalMoney()
             is DreamsInteract.UpdateUserTotalMoney -> updateTotalMoney()
+            is DreamsInteract.PlusAmountToMoneyReserved -> plusAmountToMoneyReserved(interact.value)
+            is DreamsInteract.UpdateToastMessage -> updateToastMessage(interact.stringResource)
         }
     }
 
@@ -102,6 +104,22 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
                 getDreamFromDb(id as Int)
             }catch ( e: Exception){
                 //TODO: Log error here
+            }
+        }
+    }
+
+    private fun updateToastMessage(stringResource: Int){
+        _toastMessage.value = stringResource
+    }
+
+    private fun plusAmountToMoneyReserved(value: Float){
+        _selectedDream.value?.totalMoneyReserved.let {
+            if(it != null && value <= totalMoney.restOfTheMoney){
+                _selectedDream.value?.totalMoneyReserved = it + value
+                totalMoney.restOfTheMoney = totalMoney.restOfTheMoney - value
+                updateDreamLiveDate()
+            }else{
+                _toastMessage.value = R.string.you_have_no_more_money_to_add
             }
         }
     }

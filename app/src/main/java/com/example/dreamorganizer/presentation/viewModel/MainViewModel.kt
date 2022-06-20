@@ -85,17 +85,16 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
         viewModelScope.launch {
             if (checkIfHasMoneyToDecrease(value)){
                 _totalMoney.value?.totalMoney.let {
-                    if (it != null && it > value){
+                    if (it != null && it >= value){
                         _totalMoney.value?.totalMoney = it - value
                     }
                 }
 
                 _totalMoney.value?.restOfTheMoney.let {
-                    if(it!= null && it > value){
+                    if(it!= null && it >= value){
                         _totalMoney.value?.restOfTheMoney = it - value
                     }
                 }
-
                 _totalMoney.value.let {
                     if(it != null){
                         updateTotalMoneyUseCase.execute(it)
@@ -111,7 +110,7 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
 
     private fun checkIfHasMoneyToDecrease(value: Float) : Boolean{
         _totalMoney.value?.restOfTheMoney.let {
-            return it!= null && it > value
+            return it!= null && it >= value
         }
     }
 

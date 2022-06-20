@@ -23,6 +23,7 @@ import com.example.dreamorganizer.presentation.viewModel.MainViewModel
 import com.example.dreamorganizer.util.ImageManager
 import com.google.android.material.imageview.ShapeableImageView
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import java.lang.Exception
 
 
 class EditDreamFragment : Fragment() {
@@ -41,6 +42,8 @@ class EditDreamFragment : Fragment() {
     private lateinit var btnPlusTotalValue: Button
     private lateinit var btnSubtractTotalValue: Button
     private lateinit var btnBackToHome: ShapeableImageView
+    private lateinit var btnPlusAmountToReservedMoney: Button
+    private lateinit var editTextAmountToPlusReservedMoney: EditText
     private val EXTRAS_DREAM_ID: String = "dream_id"
 
 
@@ -75,6 +78,8 @@ class EditDreamFragment : Fragment() {
             btnPlusTotalValue = it.findViewById(R.id.bt_plus_total_value_edit_dream)
             btnSubtractTotalValue = it.findViewById(R.id.bt_subtract_total_value_edit_dream)
             btnBackToHome = it.findViewById(R.id.bt_back_to_home_edit_dream)
+            btnPlusAmountToReservedMoney = it.findViewById(R.id.bt_plus_amount_reserved_money_edit_dream)
+            editTextAmountToPlusReservedMoney = it.findViewById(R.id.et_plus_value_edit_dream)
         }
 
         imageManager = ImageManager()
@@ -124,6 +129,12 @@ class EditDreamFragment : Fragment() {
 
         btnDeleteDream.setOnClickListener {
             showDeleteDialogAlert()
+        }
+
+        btnPlusAmountToReservedMoney.setOnClickListener {
+            if(checkValidateFields()){
+                dreamFeatureViewModel.interpret(DreamsInteract.PlusAmountToMoneyReserved(editTextAmountToPlusReservedMoney.text.toString().toFloat()))
+            }
         }
 
     }
@@ -177,6 +188,26 @@ class EditDreamFragment : Fragment() {
         dreamFeatureViewModel.interpret(DreamsInteract.GetTotalUserMoney)
     }
 
+
+
+    private fun checkValidateFields() : Boolean{
+
+        if(editTextAmountToPlusReservedMoney.text!!.isNotBlank() && editTextAmountToPlusReservedMoney.text!!.isNotEmpty()){
+            try {
+                val valueConverted = editTextAmountToPlusReservedMoney.text.toString().toFloat()
+                return true
+            }catch (e : Exception){
+               dreamFeatureViewModel.interpret(DreamsInteract.UpdateToastMessage(R.string.invalid_value_this_field_requires_a_numeral))
+                return false
+            }
+        }
+        else{
+            dreamFeatureViewModel.interpret(DreamsInteract.UpdateToastMessage(R.string.field_cannot_be_empty))
+            return false
+        }
+
+
+    }
 
 
 }

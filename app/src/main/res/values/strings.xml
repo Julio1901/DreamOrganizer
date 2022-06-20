@@ -33,5 +33,7 @@
     <string name="delete">Delete</string>
     <string name="cancel_dialog_alert_description">Are you sure you want to delete?</string>
     <string name="dream_edited_dialog_description">Modifications have been made. Do you want to save them?</string>
+    <string name="plus_money_reserved">Plus Money Reserved</string>
+    <string name="field_cannot_be_empty">Field cannot be empty</string>
 
 </resources>

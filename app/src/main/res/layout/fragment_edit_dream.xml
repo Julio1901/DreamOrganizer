@@ -202,11 +202,38 @@
 
     </LinearLayout>
 
+
+
+    <EditText
+        android:id="@+id/et_plus_value_edit_dream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:hint="Insert here value to plus"
+        />
+
+    <Button
+        android:id="@+id/bt_plus_amount_reserved_money_edit_dream"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/plus_money_reserved"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/old_gold"
+        />
+
+
+
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
     >
         <LinearLayout
             android:layout_width="match_parent"
@@ -234,6 +261,9 @@
         </LinearLayout>
 
 
+
+
     </LinearLayout>
+
 
 </LinearLayout>

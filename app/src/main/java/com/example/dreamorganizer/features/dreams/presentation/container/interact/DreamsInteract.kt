@@ -12,6 +12,8 @@ sealed class DreamsInteract{
     object GetTotalUserMoney: DreamsInteract()
     object UpdateDream : DreamsInteract()
     object UpdateUserTotalMoney: DreamsInteract()
+    data class PlusAmountToMoneyReserved(val value: Float): DreamsInteract()
+    data class UpdateToastMessage(val stringResource: Int): DreamsInteract()
 }
 
 enum class TypeForCalculation{
