@@ -4,16 +4,21 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.text.InputType
+import android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.compose.ui.graphics.Color
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dreamorganizer.R
 import com.example.dreamorganizer.adapter.DreamAdapter
+import com.example.dreamorganizer.changeDisplayVisibility
 import com.example.dreamorganizer.features.dreams.viewModel.DreamFeaturesViewModel
 import com.example.dreamorganizer.presentation.container.interact.ChangeTotalMoneyValueOptions
 import com.example.dreamorganizer.presentation.container.interact.MainInteractEvent
@@ -22,6 +27,8 @@ import com.example.dreamorganizer.presentation.viewModel.MainViewModel
 import com.example.dreamorganizer.presentation.viewModel.NavigationViewModel
 import com.google.android.material.imageview.ShapeableImageView
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.core.component.getScopeId
+import org.koin.core.component.getScopeName
 import java.lang.Exception
 
 
@@ -32,10 +39,13 @@ class HomeFragment : Fragment() {
     lateinit var tvRestOfTheMoneyValue : TextView
     lateinit var btnAddNewDream : Button
     lateinit var btnTotalMoney : ShapeableImageView
+    lateinit var btnVisibilityTotalMoney: ImageButton
+    lateinit var btnVisibilityRestOfTheMoney: ImageButton
     private val navigationViewModel  by sharedViewModel<NavigationViewModel>()
     private val mainViewModel by sharedViewModel<MainViewModel>()
 
-
+    private val icVisibilityOnIcon = R.drawable.ic_visibility_on
+    private val icVisibilityOffIcon = R.drawable.ic_visibility_off
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +62,12 @@ class HomeFragment : Fragment() {
         setUpObservers()
         populateDreamList()
         populateMonetaryValues()
+       prepareHomeScreenDefaultStates()
         //progressBarDreamImage.setProgressTintList(ColorStateList.valueOf(resources.getColor(R.color.graphite)))
+    }
+
+    private fun prepareHomeScreenDefaultStates(){
+       btnVisibilityTotalMoney.setImageResource(R.drawable.ic_visibility_off)
     }
 
     private fun populateDreamList() {
@@ -70,7 +85,8 @@ class HomeFragment : Fragment() {
             btnTotalMoney = it.findViewById(R.id.bt_total_money_home)
             tvTotalMoneyValue = it.findViewById(R.id.tv_total_money_value_home)
             tvRestOfTheMoneyValue = it.findViewById(R.id.tv_rest_of_the_money_value_home)
-           // progressBarDreamImage = it.findViewById(R.id.pb_dream_image_home)
+            btnVisibilityTotalMoney = it.findViewById(R.id.ib_visibility_total_money)
+            btnVisibilityRestOfTheMoney = it.findViewById(R.id.ib_visibility_rest_of_the_money)
         }
     }
 
@@ -81,7 +97,28 @@ class HomeFragment : Fragment() {
         btnTotalMoney.setOnClickListener {
             showChangeMoneyDialog()
         }
+
+        btnVisibilityTotalMoney.setOnClickListener {
+            mainViewModel.interpret(MainInteractEvent.ChangeVisibilityIconTotalMoney(it.id, it.isVisible))
+            tvTotalMoneyValue.changeDisplayVisibility()
+        }
+
+        btnVisibilityRestOfTheMoney.setOnClickListener {
+            mainViewModel.interpret(MainInteractEvent.ChangeVisibilityIconRestOfTheMoney(it.id, it.isVisible))
+            tvRestOfTheMoneyValue.changeDisplayVisibility()
+        }
     }
+
+    //TODO: Replace it
+    //Not working, change this latter
+    private fun handleWithVisibilityIcon(btn : ImageButton) {
+        if (btn.isVisible){
+            btn.setImageResource(R.drawable.ic_visibility_on)
+        }else {
+            btn.setImageResource(R.drawable.ic_visibility_off)
+        }
+    }
+
 
     private fun setUpObservers(){
         mainViewModel.listOfDreams.observe(viewLifecycleOwner, Observer {
@@ -97,6 +134,25 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, getString(it), Toast.LENGTH_LONG).show()
         })
 
+
+        mainViewModel.visibilityIconTotalMoney.observe(viewLifecycleOwner, Observer {
+            val btnId = it.btnId
+            val btn: ImageButton? = view?.findViewById(btnId)
+            if (btn != null){
+               //btn.isVisible = it.isVisible
+                handleWithVisibilityIcon(btn)
+            }
+        })
+
+        mainViewModel.visibilityIconRestOfTheMoney.observe(viewLifecycleOwner, Observer {
+            val btnId = it.btnId
+            val btn: ImageButton? = view?.findViewById(btnId)
+
+            if (btn != null){
+                //btn.isVisible = it.isVisible
+                handleWithVisibilityIcon(btn)
+            }
+        })
 
     }
 
@@ -154,8 +210,6 @@ class HomeFragment : Fragment() {
         else{
             mainViewModel.interpret(MainInteractEvent.ChangeAlertDialogMessage(R.string.monetary_value_not_update_error_message))
         }
-
-
     }
 
 
@@ -183,6 +237,8 @@ class HomeFragment : Fragment() {
         else
             return true
     }
+
+
 
 }
 

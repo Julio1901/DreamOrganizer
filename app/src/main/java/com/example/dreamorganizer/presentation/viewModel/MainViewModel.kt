@@ -34,6 +34,14 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
         get() = _alertDialogMessage
 
 
+    private val _visibilityIconTotalMoney = MutableLiveData<MainInteractEvent.ChangeVisibilityIconTotalMoney>()
+    val visibilityIconTotalMoney: MutableLiveData<MainInteractEvent.ChangeVisibilityIconTotalMoney>
+        get() = _visibilityIconTotalMoney
+
+    private val _visibilityIconRestOfTheMoney = MutableLiveData<MainInteractEvent.ChangeVisibilityIconRestOfTheMoney>()
+    val visibilityIconRestOfTheMoney: MutableLiveData<MainInteractEvent.ChangeVisibilityIconRestOfTheMoney>
+        get() = _visibilityIconRestOfTheMoney
+
 
 
     fun interpret(mainInteract: MainInteractEvent){
@@ -42,7 +50,17 @@ class MainViewModel (private val getAllDreamsUseCase: GetAllDreamsUseCase,
             is MainInteractEvent.GetMoney -> getTotalMoney()
             is MainInteractEvent.ChangeTotalMoneyValue -> changeTotalMoneyValue(mainInteract.totalMoneyValue, mainInteract.changeTotalMoneyValueOptions)
             is MainInteractEvent.ChangeAlertDialogMessage -> changeAlertDialogMessage(mainInteract.stringResourceMessage)
+            is MainInteractEvent.ChangeVisibilityIconTotalMoney -> changeVisibilityIconTotalMoney(mainInteract.btnId, mainInteract.isVisible)
+            is MainInteractEvent.ChangeVisibilityIconRestOfTheMoney -> changeVisibilityIconRestOfTheMoney(mainInteract.btnId, mainInteract.isVisible)
         }
+    }
+
+    private fun changeVisibilityIconTotalMoney(btnId: Int, isVisible: Boolean) {
+        _visibilityIconTotalMoney.value = MainInteractEvent.ChangeVisibilityIconTotalMoney(btnId, isVisible)
+    }
+
+    private fun changeVisibilityIconRestOfTheMoney(btnId: Int, isVisible: Boolean) {
+        _visibilityIconRestOfTheMoney.value = MainInteractEvent.ChangeVisibilityIconRestOfTheMoney(btnId, isVisible)
     }
 
     private fun changeTotalMoneyValue(value: Float, changeTotalMoneyValueOptions: ChangeTotalMoneyValueOptions) {

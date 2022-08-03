@@ -53,7 +53,28 @@ class DreamFeaturesViewModel (private val getDreamUseCase: GetDreamUseCase,
             is DreamsInteract.UpdateUserTotalMoney -> updateTotalMoney()
             is DreamsInteract.PlusAmountToMoneyReserved -> plusAmountToMoneyReserved(interact.value)
             is DreamsInteract.UpdateToastMessage -> updateToastMessage(interact.stringResource)
+            is DreamsInteract.BuyDream -> buyDream()
+
         }
+    }
+
+    private fun buyDream() {
+            try {
+                //Delete dream
+                viewModelScope.launch {
+                    _selectedDream.value.let {
+                        if (it != null){
+                            deleteDreamUseCase.execute(it)
+                            //Update value subtracting the purchase
+                            totalMoney.totalMoney -= it.value
+                            updateTotalMoney()
+                        }
+                    }
+                }
+            }catch ( e: Exception){
+                //TODO: Log error here
+            }
+
     }
 
     private fun updateTotalMoney() {

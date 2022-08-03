@@ -44,6 +44,7 @@ class EditDreamFragment : Fragment() {
     private lateinit var btnBackToHome: ShapeableImageView
     private lateinit var btnPlusAmountToReservedMoney: Button
     private lateinit var editTextAmountToPlusReservedMoney: EditText
+    private lateinit var btnBuyDream: ShapeableImageView
     private val EXTRAS_DREAM_ID: String = "dream_id"
 
 
@@ -80,6 +81,7 @@ class EditDreamFragment : Fragment() {
             btnBackToHome = it.findViewById(R.id.bt_back_to_home_edit_dream)
             btnPlusAmountToReservedMoney = it.findViewById(R.id.bt_plus_amount_reserved_money_edit_dream)
             editTextAmountToPlusReservedMoney = it.findViewById(R.id.et_plus_value_edit_dream)
+            btnBuyDream = it.findViewById(R.id.bt_buy_dream_edit_dream)
         }
 
         imageManager = ImageManager()
@@ -135,6 +137,11 @@ class EditDreamFragment : Fragment() {
             if(checkValidateFields()){
                 dreamFeatureViewModel.interpret(DreamsInteract.PlusAmountToMoneyReserved(editTextAmountToPlusReservedMoney.text.toString().toFloat()))
             }
+        }
+
+        btnBuyDream.setOnClickListener {
+            dreamFeatureViewModel.interpret(DreamsInteract.BuyDream)
+            navigateViewModel.interpretNavigation(DreamContainerNavigationEvent.NavigateToHome)
         }
 
     }

@@ -10,18 +10,45 @@
 
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/bt_back_to_home_edit_dream"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="4dp"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        app:shapeAppearanceOverlay="@style/Circular"
-        app:strokeColor="@color/white"
-        app:strokeWidth="3dp"
-        app:srcCompat="@drawable/ic_arrow_back" />
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+
+      >
+
+
+      <com.google.android.material.imageview.ShapeableImageView
+          android:id="@+id/bt_back_to_home_edit_dream"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:padding="4dp"
+          android:scaleType="fitCenter"
+          android:layout_marginTop="8dp"
+          android:layout_marginStart="8dp"
+          app:shapeAppearanceOverlay="@style/Circular"
+          app:strokeColor="@color/white"
+          app:strokeWidth="3dp"
+          app:srcCompat="@drawable/ic_arrow_back" />
+
+
+      <com.google.android.material.imageview.ShapeableImageView
+          android:id="@+id/bt_buy_dream_edit_dream"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          android:padding="4dp"
+          android:scaleType="fitCenter"
+          android:tint="@color/white"
+          app:srcCompat="@drawable/ic_buy"
+          android:layout_marginStart="260dp"
+          android:layout_marginEnd="8dp"
+          />
+
+
+  </LinearLayout>
+
+
+
 
 
     <com.google.android.material.imageview.ShapeableImageView
